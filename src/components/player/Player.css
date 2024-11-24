@@ -1,0 +1,14 @@
+.song-option rect:hover  {
+    fill: lightgreen;   /* Change color of rectangle on hover */
+    cursor: pointer; 
+}
+
+.youtube-player-option:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8));
+    cursor: pointer; 
+}
+
+.spotify-player-option:hover {
+    filter: drop-shadow(0 0 10px rgba(0, 255, 251, 0.8));
+    cursor: pointer; 
+}
