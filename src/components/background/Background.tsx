@@ -1,13 +1,33 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 
-
+const BgImages = [
+    'IMG3.JPG',
+    'IMG2.JPG',
+    'IMG15.JPG',
+    'IMG16.JPG',
+    'IMG1.JPG',
+    'IMG4.JPG',
+    'IMG5.JPG',
+    'IMG6.JPG',
+    'IMG10.JPG',
+    'IMG14.JPG',
+    'IMG12.JPG',
+    'IMG8.JPG',
+    'IMG17.JPG',
+    'IMG7.JPG',
+    'IMG11.JPG',
+    'IMG19.JPG',
+    'IMG0.JPG',
+    'IMG13.JPG',
+    'IMG18.JPG',
+]
 
 
 const BackgroundSetter: React.FC = () => {
     const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
     const [backgroundImage, setBackgroundImage] = useState<string>(
-        `${process.env.PUBLIC_URL}/images/bgimg1.jpeg`
+        `${process.env.PUBLIC_URL}/images/IMG3.JPG`
     );
     const [direction, setDirection] = useState<{ x: number; y: number }>({ x: 1, y: 1 }); // To track movement direction
     const imageSize = 3; // Control the zoom level
@@ -15,12 +35,17 @@ const BackgroundSetter: React.FC = () => {
     
     // Reference for the div element
     const divRef = useRef<HTMLDivElement | null>(null);
+    const speedFactor:number = 1000 // Larger this is sower the speed
 
     useEffect(() => {
         // Update the background image of the div
         if (divRef.current) {
+            const parsedList = BgImages.filter((name)=>name!==backgroundImage);
+            const randomIndex = Math.floor(Math.random() * parsedList.length);
+            const newBgImage = parsedList[randomIndex];
             divRef.current.style.backgroundImage = `url(${backgroundImage})`;
-            const imageIntervalId = setInterval(() => setBackgroundImage(`${process.env.PUBLIC_URL}/images/bgimg2.jpeg`), 3000);
+            const imageIntervalId = setInterval(() => setBackgroundImage(`${process.env.PUBLIC_URL}/images/${newBgImage}`), 10000);
+            console.log(imageIntervalId, "HAPASDF")
         }
     }, [backgroundImage]);
 
@@ -29,29 +54,45 @@ const BackgroundSetter: React.FC = () => {
             //
             const viewW = window.innerWidth;
             const viewH = imageDimensions.height*(viewW/imageDimensions.width);  
+            const speed = Math.ceil(viewW/speedFactor);
 
             const effectiveMaxWidth = viewW * imageSize - viewW;
-            const effectiveMaxHeight = viewH*imageSize - window.innerHeight;
+            const effectiveMaxHeight = viewH * imageSize - window.innerHeight;
 
-            const newX = position.x + direction.x * 5; // Move by 5px
-            const newY = position.y + direction.y * 5; // Move by 5px
+            const newX = position.x + direction.x * speed; // Move by 5px
+            const newY = position.y + direction.y * speed; // Move by 5px
             
             // Check if the image reaches the boundaries and reverse direction
-            if (newX >= effectiveMaxWidth || newX <= 0) {
+            if (newX >= effectiveMaxWidth) {
                 setDirection(prevDirection => ({
                     ...prevDirection,
-                    x: -prevDirection.x, // Reverse horizontal direction
+                    x: -1, // Reverse horizontal direction
                 }));
             }
-            if (newY >= effectiveMaxHeight || newY <= 0) {
+            if (newX <= 0) {
                 setDirection(prevDirection => ({
                     ...prevDirection,
-                    y: -prevDirection.y, // Reverse vertical direction
+                    x: 1 // Reverse horizontal direction
+                }));
+            }
+            if (newY >= effectiveMaxHeight) {
+                setDirection(prevDirection => ({
+                    ...prevDirection,
+                    y: -1, // Reverse vertical direction
+                }));
+            }
+            if (newY <= 0) {
+                setDirection(prevDirection => ({
+                    ...prevDirection,
+                    y: 1, // Reverse vertical direction
                 }));
             }
 
             // Update the position
-            setPosition({ x: newX, y: newY });
+            setPosition({ 
+                x: Math.max(0,Math.min(newX,effectiveMaxWidth)), 
+                y: Math.max(0,Math.min(newY,effectiveMaxHeight)) 
+            });
         };
 
         // Update background position every 10 milliseconds for continuous scroll
@@ -70,9 +111,9 @@ const BackgroundSetter: React.FC = () => {
             divRef.current.style.backgroundPosition = `-${position.x}px -${position.y}px`;
             divRef.current.style.backgroundSize = `${imageSize * 100}%`;
             divRef.current.style.backgroundRepeat = 'no-repeat';
-            divRef.current.style.filter = 'sepia(100%) blur(2px)' ;
+            divRef.current.style.filter = 'sepia(50%) blur(2px)' ;
         }
-    }, [position, backgroundImage]); 
+    }, [position]); 
 
     return (
         <div
@@ -88,7 +129,8 @@ const BackgroundSetter: React.FC = () => {
                 backgroundRepeat: 'no-repeat',
                 overflow: 'hidden',
             }}
-        >
+        >   
+            {/*  FOR DEBUGGING
             <div style={{
                 position: 'fixed',
                 top: 0,
@@ -104,6 +146,7 @@ const BackgroundSetter: React.FC = () => {
                 <p>Viewport Size: {window.innerWidth}x{window.innerHeight}</p>
                 <p>Zoom Factor: {imageSize}</p>
             </div>
+            */}
         </div>
     );
 };
