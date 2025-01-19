@@ -17,6 +17,13 @@ html {
   font-style: normal; 
 }
 
+@font-face {
+  font-family: 'PlayerFont';
+  src: url('fonts/iInstead2.otf') format('opentype');
+  font-weight: normal; 
+  font-style: normal; 
+}
+
 
 :root {
   /* Primary Colors */

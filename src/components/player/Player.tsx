@@ -6,38 +6,81 @@ import {SongOption, SongList} from './songs'
 
 
 
-const SubRect:React.FC<{x:number, y:number, song:SongOption, setSong:Dispatch<SetStateAction<SongOption | null>>}> = ({ x, y, song, setSong }) => {
+const SubRect:React.FC<{
+    x:number, 
+    y:number, 
+    song:SongOption,
+    isSelected:boolean, 
+    setSong:Dispatch<SetStateAction<SongOption | null>>
+}> = ({ x, y, song, isSelected, setSong }) => {
 
     const w = 200;
     const h = 40;
 
+    const wDiff = 6;
+    const hDiff = 8
+    const selXDiff = isSelected?3:0;
+    const selYDiff = isSelected?5:0;
+    const tlTriangleDiff = 5
+
+
     return (
         <g className="song-option">
-            {/* Rectangle */}
+            {/* bl corner */}
             <rect
-            x={x}
-            y={y}
-            width={w}
-            height={h}
-            fill="var(--snow-white)"
-            stroke="var(--snow-white)"
-            strokeWidth="2"
-            rx="10"  
-            ry="10"
-            onClick={()=>{setSong(song)}}
-        />
+                x={x-wDiff}
+                y={y+hDiff+20}
+                width={w-20}
+                height={h-20}
+                fill="black"
+                strokeWidth="1"
+                rx="10"  
+                ry="10"
+            />
+            {/* right side filler rectangle */}
+            <rect
+                x={x+50-wDiff}
+                y={y+hDiff+20}
+                width={w-50-7}
+                height={h-20}
+                fill="black"
+                strokeWidth="1"
+            />
+            {/* top side filler rectangle */}
+            <rect
+                x={x-wDiff}
+                y={y+hDiff+tlTriangleDiff}
+                width={w}
+                height={30-tlTriangleDiff}
+                fill="black"
+                strokeWidth="1"
+            />
+            <polygon points={`${x-wDiff},${y+hDiff+tlTriangleDiff} ${x+5},${y+1+selYDiff} ${x},${y+hDiff+tlTriangleDiff+1}`} fill="black" />
+            <polygon points={`${x+w-wDiff-7},${y+h+hDiff} ${x+w-wDiff-8},${y+h} ${x+w-5},${y+h}`} fill="black" />
+            <rect
+                x={x-selXDiff}
+                y={y+selYDiff}
+                width={w}
+                height={h}
+                fill="var(--snow-white)"
+                stroke="black"
+                strokeWidth="1"
+                rx="10"  
+                ry="10"
+                onClick={()=>{setSong(song)}}
+            />
             {/* Text inside the rectangle */}
             <text
                 style={{
                     pointerEvents:'none',
                 }}
-                x={x + w / 2} 
-                y={y + h / 2} 
+                x={x + w / 2-selXDiff} 
+                y={y + h / 2+selXDiff} 
                 fill="black"
                 fontSize="14"
                 textAnchor="middle"
                 dominantBaseline="middle" 
-                fontFamily="BandNameFont, sans-serif"
+                fontFamily="PlayerFont, sans-serif"
             >
             {song.name}
             </text>
@@ -133,7 +176,8 @@ const SvgWithHtml = () => {
             SongList.map((song, i)=>(
                 <SubRect 
                     x={150} 
-                    y={175+65*i} 
+                    y={165+65*i}
+                    isSelected={song===selectedSong} 
                     song={song}
                     setSong={setSelectedSong}
                 />
