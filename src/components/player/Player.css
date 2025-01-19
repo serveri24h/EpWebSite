@@ -1,5 +1,5 @@
-.song-option rect:hover  {
-    fill: var(--winter-blue);   /* Change color of rectangle on hover */
+.song-button:hover  {
+    fill: #ecf3f3;   /* Change color of rectangle on hover */
     cursor: pointer; 
 }
 

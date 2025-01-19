@@ -5,6 +5,59 @@ import {ReactComponent as YouTubeLogo} from './Logos/youtube.svg';
 import {SongOption, SongList} from './songs'
 
 
+const YoutubeButton:React.FC<{setPlayer:any}> = ({setPlayer}) => {
+    return (
+        <g
+            onClick={() => setPlayer('youtube')}
+            className="youtube-player-option"
+            style={{ cursor: 'pointer' }}  // Optional, to show pointer on hover
+        >
+            {/* Rectangle to cover center hole*/}
+            <rect
+                x="575"   
+                y="160"   
+                width="50"  
+                height="35" 
+                fill="transparent" 
+                stroke="none" 
+            />
+            <YouTubeLogo
+                x = '550'
+                y = '140'
+                stroke='black'
+                width='100px'   
+                height='75px'  
+            />   
+        </g>
+    )
+}
+
+const SpotifyButton:React.FC<{setPlayer:any}> = ({setPlayer}) => {
+    return (
+        <g
+            onClick={() => setPlayer('spotify')}
+            className="spotify-player-option"
+            style={{ cursor: 'pointer' }}  // Optional, to show pointer on hover
+        >
+            {/* Circle to cover center hole*/}
+            <circle
+                cx="730"   
+                cy="180"
+                r="25"   
+                fill="transparent" 
+                stroke="none" 
+            />
+            <SpotifyLogo
+                x = '700'
+                y = '150'
+                stroke='black'
+                width='60px'   
+                height='60px'
+            />
+        </g>
+    )
+}
+
 
 const SubRect:React.FC<{
     x:number, 
@@ -58,6 +111,7 @@ const SubRect:React.FC<{
             <polygon points={`${x-wDiff},${y+hDiff+tlTriangleDiff} ${x+5},${y+1+selYDiff} ${x},${y+hDiff+tlTriangleDiff+1}`} fill="black" />
             <polygon points={`${x+w-wDiff-7},${y+h+hDiff} ${x+w-wDiff-8},${y+h} ${x+w-5},${y+h}`} fill="black" />
             <rect
+                className="song-button"
                 x={x-selXDiff}
                 y={y+selYDiff}
                 width={w}
@@ -74,8 +128,8 @@ const SubRect:React.FC<{
                 style={{
                     pointerEvents:'none',
                 }}
-                x={x + w / 2-selXDiff} 
-                y={y + h / 2+selXDiff} 
+                x={x + (w / 2)-selXDiff*2} 
+                y={y + (h / 2)+selXDiff*2} 
                 fill="black"
                 fontSize="14"
                 textAnchor="middle"
@@ -149,26 +203,14 @@ const SvgWithHtml = () => {
         />
 
 
-
-
         { /* Player Options */ }
-        <YouTubeLogo
-            className="youtube-player-option"
-            x = '550'
-            y = '140'
-            stroke='black'
-            width='100px'   
-            height='75px'  
-            onClick={()=>setPlayer('youtube')}
+        <YoutubeButton
+            setPlayer={setPlayer}
         />
-        <SpotifyLogo
-            className="spotify-player-option"
-            x = '700'
-            y = '150'
-            stroke='black'
-            width='60px'   
-            height='60px'
-            onClick={()=>setPlayer('spotify')}
+
+
+        <SpotifyButton
+            setPlayer={()=>setPlayer}
         />
 
         { /* Song List */}
