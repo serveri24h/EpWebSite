@@ -12,33 +12,36 @@ const SubRect:React.FC<{x:number, y:number, song:SongOption, setSong:Dispatch<Se
     const h = 40;
 
     return (
-      <g className="song-option">
-        {/* Rectangle */}
-        <rect
-          x={x}
-          y={y}
-          width={w}
-          height={h}
-          fill="lightblue"
-          stroke="black"
-          strokeWidth="2"
-          rx="10"  
-          ry="10"
-          onClick={()=>{setSong(song)}}
+        <g className="song-option">
+            {/* Rectangle */}
+            <rect
+            x={x}
+            y={y}
+            width={w}
+            height={h}
+            fill="var(--snow-white)"
+            stroke="var(--snow-white)"
+            strokeWidth="2"
+            rx="10"  
+            ry="10"
+            onClick={()=>{setSong(song)}}
         />
-  
-        {/* Text inside the rectangle */}
-        <text
-          x={x + w / 2} // Center the text horizontally
-          y={y + h / 2} // Center the text vertically
-          fill="black"
-          fontSize="14"
-          textAnchor="middle" // Align text to the center
-          dominantBaseline="middle" // Align text to the middle of the vertical axis
-        >
-          {song.name}
-        </text>
-      </g>
+            {/* Text inside the rectangle */}
+            <text
+                style={{
+                    pointerEvents:'none',
+                }}
+                x={x + w / 2} 
+                y={y + h / 2} 
+                fill="black"
+                fontSize="14"
+                textAnchor="middle"
+                dominantBaseline="middle" 
+                fontFamily="BandNameFont, sans-serif"
+            >
+            {song.name}
+            </text>
+        </g>
     );
 };
 
@@ -76,36 +79,41 @@ const SvgWithHtml = () => {
     const [selectedSong, setSelectedSong] = useState<SongOption|null>(null); 
     const [selectedPlayer, setSelectedPlayer] = useState<string>('youtube'); 
 
-    const handleButtonClick = () => {
-        alert("HALÖOOO");
-    }
-
     const setPlayer = (player:string) => {
         setSelectedPlayer(player);
     }
 
     return (
-      <svg width="1200" height="800" style={{ border: '1px solid black' }}>
-        {/* SVG Circle */}
-        <rect x="50" y="50" width="1100" height="600" fill="black" stroke="black" strokeWidth="2"        
-        rx="20"  
-        ry="20" />
-        <circle 
-            cx="100"  
-            cy="100"  
-            r="30"    
-            fill="orange"
-            stroke="black"
-            strokeWidth="2"
-            style={{ cursor: 'pointer' }}  
-            onClick={handleButtonClick}    
+      <svg width="1200" height="800" style={{}}>
+        <defs>
+            <pattern id="imageBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
+                <image 
+                    href={`${process.env.PUBLIC_URL}/backgrounds/gray-metal-texture.jpg`} 
+                    width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
+                />
+            </pattern>
+        </defs>
+
+
+        {/* Antennas */}
+        <line x1="900" y1="25" x2="1005" y2="130" stroke="var(--dark-grey)" stroke-width="6"/> 
+        <circle cx="900" cy="25" r="3" stroke="var(--dark-grey)" stroke-width="3"/> 
+
+        {/* The Main svg */}
+        <rect x="100" y="125" width="1000" height="450" fill="url(#imageBackground)" stroke="var(--dark-grey)" strokeWidth="1"        
+            rx="20"  
+            ry="20" 
         />
+
+
+
 
         { /* Player Options */ }
         <YouTubeLogo
             className="youtube-player-option"
             x = '550'
-            y = '75'
+            y = '140'
+            stroke='black'
             width='100px'   
             height='75px'  
             onClick={()=>setPlayer('youtube')}
@@ -113,9 +121,10 @@ const SvgWithHtml = () => {
         <SpotifyLogo
             className="spotify-player-option"
             x = '700'
-            y = '75'
-            width='75px'   
-            height='75px'
+            y = '150'
+            stroke='black'
+            width='60px'   
+            height='60px'
             onClick={()=>setPlayer('spotify')}
         />
 
@@ -123,16 +132,16 @@ const SvgWithHtml = () => {
         {
             SongList.map((song, i)=>(
                 <SubRect 
-                    x={100} 
-                    y={150+75*i} 
+                    x={150} 
+                    y={175+65*i} 
                     song={song}
                     setSong={setSelectedSong}
                 />
             ))
         }
 
-        { /* Player as Iframe         */}
-        <foreignObject x="350" y="200" width="750" height="500">
+        { /* Player as Iframe  */}
+        <foreignObject x="350" y="225" width="750" height="400">
             {
                 <PlayerIframe
                     song={selectedSong} 
@@ -140,8 +149,6 @@ const SvgWithHtml = () => {
                 /> 
             }
         </foreignObject>
-
-
       </svg>
     );
   };
@@ -149,7 +156,13 @@ const SvgWithHtml = () => {
 
 const PlayerComponent:React.FC = () =>{
     return (
-        <div style = {{ display:'flex', flexDirection:'column', justifyContent:'center', height:'90%'}}>
+        <div style = {{ 
+            display:'flex', 
+            flexDirection:'column', 
+            justifyContent:'center', 
+            height:'100%', 
+            //backgroundColor:'white'
+        }}>
             <SvgWithHtml/>
         </div>
     )

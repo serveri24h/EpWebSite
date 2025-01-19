@@ -2,6 +2,44 @@ html {
   height: 100%;
 }
 
+/* Fonts */
+@font-face {
+  font-family: 'BandNameFont';
+  src: url('fonts/BandFont3.otf') format('opentype');
+  font-weight: normal; 
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: 'AlbumNameFont';
+  src: url('fonts/SnowKei.ttf') format('opentype');
+  font-weight: normal; 
+  font-style: normal; 
+}
+
+
+:root {
+  /* Primary Colors */
+  --winter-white: #f8f9fa;
+  --winter-blue: #4a90e2;
+  --winter-green: #2d8659;
+  --black: #000000;
+  --light-grey: #95a6a7;
+  --dark-grey: #414f50;
+
+  /* Accent Colors */
+  --snow-white: #ffffff;
+  --deep-blue: #1e3a5f;
+  --forest-green: #1b4d3e;
+  
+  /* Text and Background */
+  --text-color: #f8f9fa;
+  --background-dark: #121212;
+  --background-light: #e0f7fa;
+  --border-color: #a8c0d3;
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

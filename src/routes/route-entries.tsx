@@ -7,9 +7,6 @@ import PageHeader from '../components/header/HeaderComponent';
 
 const RouteEntries: React.FC = () => {
   return (
-    <>
-        <PageHeader/>
-        {/**/}
         <div className= 'sibar-split' style={{
             display:'flex',
             flexDirection:'row',
@@ -24,7 +21,6 @@ const RouteEntries: React.FC = () => {
                 </Routes>
             </Router>
         </div>
-    </>
   );
 };
 

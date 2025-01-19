@@ -1,0 +1,29 @@
+
+.page-header {
+    position: sticky;
+    top: 0;
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    color: var(--winter-white);
+    background-color: var(--winter-white);
+    justify-content:center;
+    font-family: BandNameFont, sans-serif;
+    font-size: small;
+}
+
+.page-header a {
+    text-decoration: none;
+    color: black; /* Default color */
+    text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.page-header a:hover {
+    color: var(--deep-blue); /* Change color on hover */
+    text-shadow: 
+        -5px 5px 10px var(--winter-blue),
+        5px 5px 10px var(--winter-blue),
+        5px -5px 10px var(--winter-blue),
+        -5px -5px 10px var(--winter-blue)
+    ;
+}
