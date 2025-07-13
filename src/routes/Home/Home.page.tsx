@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from '../../logo.svg';
+import PageWrapper from '../../components/pagewrapper/PageWrapper';
 
 
 const Home:React.FC = () => {
   return (
     <div className="App">
-        <h1>HOME</h1>
+        <h1>Home</h1>
     </div>
   );
 }

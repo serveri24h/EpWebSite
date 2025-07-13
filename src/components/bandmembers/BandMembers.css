@@ -1,58 +1,31 @@
 /* General container styling */
 .band-member-container {
-    height: 80%;
+    height: 100%;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
     gap: 10px; /* space between sub-divs */
   }
   
-  /* Sub-div styling */
-  .band-member {
+/* Sub-div styling */
+.band-member {
     background-color: lightblue;
     text-align: center;
     padding: 20px;
     border: 1px solid #ddd;
     font-size: 18px;
-  }
+}
   
   /* Mobile responsiveness */
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .band-member-container {
       grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
     }
-  }
+}
   
+.member-mini-image:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8));
+    cursor: pointer; 
+    z-index: 1000;
+}
 
-
-  .popup-page-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .popup-page-content {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
-    text-align: center;
-    position: relative;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }

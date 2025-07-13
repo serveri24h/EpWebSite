@@ -1,7 +1,6 @@
 
 import React from "react";
 import "./BandMemberDetails.css"
-import logo from './assets/logo.png';
 
 export interface MemberConfig {
     n:number,
@@ -25,7 +24,7 @@ export const MemberConfigList = [
     }, 
     {
         n:1,
-        name:"Sandels",
+        name:"Sandy",
         responsibility:"Guitars, Samples & Beats",
         xOffset:190,
         yOffset:80,
@@ -71,7 +70,7 @@ export const MemberConfigList = [
     {
         n:6,
         name:"Leo",
-        responsibility:"Production",
+        responsibility:"Production, Lyrics",
         xOffset:-100,
         yOffset:0,
         width:450,

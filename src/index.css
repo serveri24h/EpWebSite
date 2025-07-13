@@ -44,6 +44,10 @@ html {
   --background-dark: #121212;
   --background-light: #e0f7fa;
   --border-color: #a8c0d3;
+
+  /*SHADOWS*/
+  --deep-blue-shadow: #ffffff71;
+
 }
 
 

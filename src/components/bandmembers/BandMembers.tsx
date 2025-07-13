@@ -37,7 +37,7 @@ const BandMemberSelector:React.FC<BandMemberSelectorProps> = ({onSelection, n, n
 
     return (
         <g
-            className="youtube-player-option"
+            className="member-mini-image"
             style={{ cursor: 'pointer' }}  // Optional, to show pointer on hover
             onClick={onSelection}
         >
@@ -54,19 +54,11 @@ const BandMemberSelector:React.FC<BandMemberSelectorProps> = ({onSelection, n, n
     )
 }
 
-const BandMember:React.FC<{name:string}> = ({name}) => {
-    return( 
-        <div className="band-member">
-            <h1>{name}</h1>
-        </div>
-    )
-}
-
 
 const BandMembers:React.FC = () => {
     const [selectedMember, setSelectedMember] = useState<number | null>(null);
     return (
-        <>
+        <div>
         <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
             {
                 MemberConfigList.map(
@@ -78,7 +70,7 @@ const BandMembers:React.FC = () => {
             }
         </svg>
         {selectedMember!==null && <BandMemberDetails data={MemberConfigList[selectedMember]} onClose={() => setSelectedMember(null)} />}
-        </>
+        </div>
     )
 }
 

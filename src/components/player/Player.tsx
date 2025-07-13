@@ -143,6 +143,7 @@ const SubRect:React.FC<{
 };
 
 const PlayerIframe:React.FC<{song:SongOption | null, player:string}> = ({song, player}) => {
+    console.log(song, player)
     return (
         <div style={{ textAlign: 'center' }}>
         {song ? (
@@ -163,7 +164,7 @@ const PlayerIframe:React.FC<{song:SongOption | null, player:string}> = ({song, p
                     <rect x="0" y="0" width="560" height="315" fill="black" stroke="white" strokeWidth="2"        
                     rx="20"  
                     ry="20" />
-                    <line x1="60" y1="315" x2="500" y2="0" stroke="white" stroke-width="2" />
+                    <line x1="60" y1="315" x2="500" y2="0" stroke="white" strokeWidth="2" />
                 </svg>
         }
 
@@ -177,12 +178,18 @@ const SvgWithHtml = () => {
     const [selectedPlayer, setSelectedPlayer] = useState<string>('youtube'); 
 
     const setPlayer = (player:string) => {
+        console.log(player)
         setSelectedPlayer(player);
     }
 
     return (
-      <svg width="1200" height="800" style={{}}>
+      <svg width="1200" height="800" style={{
+      }}>
         <defs>
+            <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="-5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
+                <feDropShadow dx="5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
+            </filter>
             <pattern id="imageBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
                 <image 
                     href={`${process.env.PUBLIC_URL}/backgrounds/gray-metal-texture.jpg`} 
@@ -193,13 +200,14 @@ const SvgWithHtml = () => {
 
 
         {/* Antennas */}
-        <line x1="900" y1="25" x2="1005" y2="130" stroke="var(--dark-grey)" stroke-width="6"/> 
-        <circle cx="900" cy="25" r="3" stroke="var(--dark-grey)" stroke-width="3"/> 
+        <line x1="900" y1="25" x2="1005" y2="130" stroke="var(--dark-grey)" strokeWidth="6"/> 
+        <circle cx="900" cy="25" r="3" stroke="var(--dark-grey)" strokeWidth="3"/> 
 
         {/* The Main svg */}
-        <rect x="100" y="125" width="1000" height="450" fill="url(#imageBackground)" stroke="var(--dark-grey)" strokeWidth="1"        
+        <rect x="100" y="125" width="1000" height="450" fill="url(#imageBackground)" stroke="var(--dark-grey)" strokeWidth="1" filter="url(#drop-shadow)"     
             rx="20"  
-            ry="20" 
+            ry="20"
+            
         />
 
 
@@ -210,7 +218,7 @@ const SvgWithHtml = () => {
 
 
         <SpotifyButton
-            setPlayer={()=>setPlayer}
+            setPlayer={setPlayer}
         />
 
         { /* Song List */}
@@ -245,9 +253,7 @@ const PlayerComponent:React.FC = () =>{
         <div style = {{ 
             display:'flex', 
             flexDirection:'column', 
-            justifyContent:'center', 
-            height:'100%', 
-            //backgroundColor:'white'
+            justifyContent:'center',
         }}>
             <SvgWithHtml/>
         </div>

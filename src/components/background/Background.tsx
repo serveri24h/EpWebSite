@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-
+import './Background.css';
 
 const BgImages = [
     'IMG3.JPG',
@@ -27,7 +27,7 @@ const BgImages = [
 const BackgroundSetter: React.FC = () => {
     const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
     const [backgroundImage, setBackgroundImage] = useState<string>(
-        `${process.env.PUBLIC_URL}/images/IMG3.JPG`
+        `IMG3.JPG`
     );
     const [direction, setDirection] = useState<{ x: number; y: number }>({ x: 1, y: 1 }); // To track movement direction
     const imageSize = 3; // Control the zoom level
@@ -35,17 +35,22 @@ const BackgroundSetter: React.FC = () => {
     
     // Reference for the div element
     const divRef = useRef<HTMLDivElement | null>(null);
-    const speedFactor:number = 1000 // Larger this is sower the speed
+    const speedFactor:number = 2000 // Larger this is sower the speed
 
     useEffect(() => {
         // Update the background image of the div
         if (divRef.current) {
-            const parsedList = BgImages.filter((name)=>name!==backgroundImage);
+            const parsedList = BgImages.filter((name) => name !== backgroundImage);
             const randomIndex = Math.floor(Math.random() * parsedList.length);
             const newBgImage = parsedList[randomIndex];
-            divRef.current.style.backgroundImage = `url(${backgroundImage})`;
-            const imageIntervalId = setInterval(() => setBackgroundImage(`${process.env.PUBLIC_URL}/images/${newBgImage}`), 10000);
-            console.log(imageIntervalId, "HAPASDF")
+
+            // Update the background image every 10 seconds with an animation
+            const imageIntervalId = setInterval(() => {
+                setBackgroundImage(newBgImage);
+            }, 20000);
+
+            // Clear interval on component unmount
+            return () => clearInterval(imageIntervalId);
         }
     }, [backgroundImage]);
 
@@ -118,6 +123,7 @@ const BackgroundSetter: React.FC = () => {
     return (
         <div
             ref={divRef}
+            className='background-container'
             style={{
                 position: 'fixed',
                 top: 0,
@@ -128,6 +134,7 @@ const BackgroundSetter: React.FC = () => {
                 backgroundSize: `${imageSize * 100}%`,
                 backgroundRepeat: 'no-repeat',
                 overflow: 'hidden',
+                backgroundImage: `url(${process.env.PUBLIC_URL}/images/${backgroundImage})`
             }}
         >   
             {/*  FOR DEBUGGING
