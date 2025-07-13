@@ -19,16 +19,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18  # or your preferred version
-          
-      - name: Skip lint errors
-        run: ESLINT_NO_DEV_ERRORS=true npm run build
-        
+          node-version: 18  
+
       - name: Install dependencies
         run: npm install
 
-      - name: Build the app
-        run: npm run build
+      - name: Build the app (Skip lint errors)
+        run: ESLINT_NO_DEV_ERRORS=true npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
