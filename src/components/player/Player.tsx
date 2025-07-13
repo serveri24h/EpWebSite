@@ -14,8 +14,8 @@ const YoutubeButton:React.FC<{setPlayer:any, x:number, y:number}> = ({setPlayer,
         >
             {/* Rectangle to cover center hole*/}
             <rect
-                x="575"   
-                y="160"   
+                x={x+25}   
+                y={y+17}  
                 width="50"  
                 height="35" 
                 fill="transparent" 
@@ -41,8 +41,8 @@ const SpotifyButton:React.FC<{setPlayer:any,x:number, y:number}> = ({setPlayer,x
         >
             {/* Circle to cover center hole*/}
             <circle
-                cx="730"   
-                cy="180"
+                cx={x+30}   
+                cy={y+30}
                 r="25"   
                 fill="transparent" 
                 stroke="none" 
@@ -72,7 +72,7 @@ const SubRect:React.FC<{
 
     const w = width || 200;
     const h = height || 40;
-    const f = fontSize || 14;
+    const f = fontSize || 15;
 
     const wDiff = 6;
     const hDiff = 8
@@ -83,13 +83,27 @@ const SubRect:React.FC<{
 
     return (
         <g className="song-option">
+            <defs>
+                <pattern id="buttonBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
+                    <image 
+                        href={`${process.env.PUBLIC_URL}/backgrounds/button-background.jpg`} 
+                        width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
+                    />
+                </pattern>
+                <pattern id="buttonBackgroundSide" patternUnits="userSpaceOnUse" width="1200" height="800">
+                    <image 
+                        href={`${process.env.PUBLIC_URL}/backgrounds/button-background-side.jpg`} 
+                        width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
+                    />
+                </pattern>
+            </defs>
             {/* bl corner */}
             <rect
                 x={x-wDiff}
                 y={y+hDiff+20}
                 width={w-20}
                 height={h-20}
-                fill="black"
+                fill={"url(#buttonBackgroundSide)"}
                 strokeWidth="1"
                 rx="10"  
                 ry="10"
@@ -100,7 +114,7 @@ const SubRect:React.FC<{
                 y={y+hDiff+20}
                 width={w-50-7}
                 height={h-20}
-                fill="black"
+                fill={"url(#buttonBackgroundSide)"}
                 strokeWidth="1"
             />
             {/* top side filler rectangle */}
@@ -109,19 +123,19 @@ const SubRect:React.FC<{
                 y={y+hDiff+tlTriangleDiff}
                 width={w}
                 height={30-tlTriangleDiff}
-                fill="black"
+                fill={"url(#buttonBackgroundSide)"}
                 strokeWidth="1"
             />
-            <polygon points={`${x-wDiff},${y+hDiff+tlTriangleDiff} ${x+5},${y+1+selYDiff} ${x},${y+hDiff+tlTriangleDiff+1}`} fill="black" />
-            <polygon points={`${x+w-wDiff-7},${y+h+hDiff} ${x+w-wDiff-8},${y+h} ${x+w-5},${y+h}`} fill="black" />
+            <polygon points={`${x-wDiff},${y+hDiff+tlTriangleDiff} ${x+5},${y+1+selYDiff} ${x},${y+hDiff+tlTriangleDiff+1}`} fill="url(#buttonBackgroundSide)" />
+            <polygon points={`${x+w-wDiff-7},${y+h+hDiff} ${x+w-wDiff-8},${y+h} ${x+w-5},${y+h}`} fill="url(#buttonBackgroundSide)"/>
             <rect
                 className="song-button"
                 x={x-selXDiff}
                 y={y+selYDiff}
                 width={w}
                 height={h}
-                fill="var(--snow-white)"
-                stroke="black"
+                fill={"url(#buttonBackground)"}
+                stroke={"url(#buttonBackground)"}
                 strokeWidth="1"
                 rx="10"  
                 ry="10"
@@ -134,11 +148,11 @@ const SubRect:React.FC<{
                 }}
                 x={x + (w / 2)-selXDiff*2} 
                 y={y + (h / 2)+selXDiff*2} 
-                fill="black"
+                fill={"#10123bff"}
                 fontSize={`${f}`}
                 textAnchor="middle"
                 dominantBaseline="middle" 
-                fontFamily="PlayerFont, sans-serif"
+                //fontFamily="san" //"PlayerFont, sans-serif"
             >
             {song.name}
             </text>
@@ -148,46 +162,56 @@ const SubRect:React.FC<{
 
 const PlayerIframe:React.FC<{song:SongOption | null, player:string, width:number, height:number}> = ({song, player, width, height}) => {
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center', /* height: !!song?"100%":"0%", transition: "height 1s ease" */}}>
         {song ? (
             player === 'youtube' ?
                 <iframe 
+                    className="iframe-spotify"
                     width={width} height={height} src={song.youtubeUrl} 
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={true}>
                 </iframe> :
                 <iframe 
+                    className="iframe-spotify"
                     title={song.name}
                     src={song.spotifyUrl}  
-                    width={width} height={height} allowFullScreen={true} 
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+                    width={width} height={height} 
+                    allowFullScreen={true} 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                >
                 </iframe>   
             ): 
-                <svg width={width} height={height}>
-                    <rect x="0" y="0" width="560" height="315" fill="black" stroke="white" strokeWidth="2"        
+                /*<svg width={width} height={height}>
+                    <rect x="0" y="0" width={width} height={height} fill="black" stroke="white" strokeWidth="2"        
                     rx="20"  
                     ry="20" />
                     <line x1="60" y1="315" x2="500" y2="0" stroke="white" strokeWidth="2" />
                 </svg>
+                */
+                <></>
         }
 
       </div>
     )
 }
 
-const SvgWithHtml = () => {
+interface PlayerViewProps {
+    selectedSong:SongOption | null;
+    setSelectedSong: Dispatch<SetStateAction<SongOption | null>>
+    selectedPlayer:string;
+    setPlayer: (player:string)=>void;
+}
 
-    const [selectedSong, setSelectedSong] = useState<SongOption|null>(null); 
-    const [selectedPlayer, setSelectedPlayer] = useState<string>('youtube'); 
 
-    const setPlayer = (player:string) => {
-        console.log(player)
-        setSelectedPlayer(player);
-    }
+const DesktopView: React.FC<PlayerViewProps>= ({
+    selectedSong, 
+    setSelectedSong, 
+    selectedPlayer, 
+    setPlayer
+}) => {
 
-    return (
-      <svg width="1200" height="800">
+    return <svg width="1200" height="800">
         <defs>
             <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
                 <feDropShadow dx="-5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
@@ -248,24 +272,21 @@ const SvgWithHtml = () => {
                     song={selectedSong} 
                     player={selectedPlayer}
                     width={560}
-                    height={350}
+                    height={320}
                 /> 
             }
         </foreignObject>
-      </svg>
-    );
-  };
+    </svg>
+}
+
+const MobileView:React.FC<PlayerViewProps> = ({
+    selectedSong, 
+    setSelectedSong,  
+    selectedPlayer, 
+    setPlayer
+}) => {
 
 
-const MobileView:React.FC = () => {
-
-    const [selectedSong, setSelectedSong] = useState<SongOption|null>(null); 
-    const [selectedPlayer, setSelectedPlayer] = useState<string>('youtube'); 
-
-    const setPlayer = (player:string) => {
-        console.log(player)
-        setSelectedPlayer(player);
-    }
 
     return <>
         <svg width="400" height="800">
@@ -288,8 +309,7 @@ const MobileView:React.FC = () => {
                 
             />
 
-                    {
-            SongList.map((song, i)=>(
+            { SongList.map((song, i)=>(
                 <SubRect 
                     x={72+(i%2)*140} 
                     y={200+Math.floor(i/2)*50}
@@ -300,40 +320,45 @@ const MobileView:React.FC = () => {
                     song={song}
                     setSong={setSelectedSong}
                 />
-            ))
-        }
+            ))}
 
-        { /* Player Options */ }
-        <YoutubeButton
-            setPlayer={setPlayer}
-            x={100}
-            y={112}
-        />
+            { /* Player Options */ }
+            <YoutubeButton
+                setPlayer={setPlayer}
+                x={100}
+                y={112}
+            />
 
-        <SpotifyButton
-            setPlayer={setPlayer}
-            x={220}
-            y={120}
-        />
-        
-        <foreignObject x="75" y="360" width="250" height="220">
-            {
-                <PlayerIframe
-                    song={selectedSong} 
-                    player={selectedPlayer}
-                    width={250}
-                    height={220}
-                /> 
-            }
-        </foreignObject>
-
-
+            <SpotifyButton
+                setPlayer={setPlayer}
+                x={220}
+                y={120}
+            />
+            
+            <foreignObject x="65" y="360" width="270" height="220">
+                {
+                    <PlayerIframe
+                        song={selectedSong} 
+                        player={selectedPlayer}
+                        width={270}
+                        height={220}
+                    /> 
+                }
+            </foreignObject>
         </svg>
     </>
 }
 
-const PlayerComponent:React.FC = () =>{
+const PlayerComponent:React.FC = () => {
 
+    const [selectedSong, setSelectedSong] = useState<SongOption|null>(null); 
+    const [selectedPlayer, setSelectedPlayer] = useState<string>('youtube'); 
+
+    const setPlayer = (player:string) => {
+        console.log(player)
+        setSelectedPlayer(player);
+    }
+    
     const isMobile = window.innerWidth <= 768;
 
     return (
@@ -341,10 +366,20 @@ const PlayerComponent:React.FC = () =>{
             display:'flex', 
             flexDirection:'column', 
             justifyContent:'center',
-        }}>
-            { isMobile ?  <MobileView/>  : <SvgWithHtml/>}
-        </div>
-    )
-}
+        }}>{
+            isMobile ? <MobileView
+                selectedSong={selectedSong}
+                setSelectedSong={setSelectedSong}
+                selectedPlayer={selectedPlayer}
+                setPlayer={setPlayer}
+            /> : <DesktopView
+                selectedSong={selectedSong}
+                setSelectedSong={setSelectedSong}
+                selectedPlayer={selectedPlayer}
+                setPlayer={setPlayer}
+            />
+        }</div>
+    );
+};
 
 export default PlayerComponent;

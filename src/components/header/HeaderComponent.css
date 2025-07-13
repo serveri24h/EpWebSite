@@ -6,11 +6,15 @@
     flex-direction:row;
     width:100%;
     color: var(--winter-white);
-    background-color: var(--winter-white);
+    background-image: url("/public/backgrounds/button-background.jpg");
     justify-content:center;
     font-family: BandNameFont, sans-serif;
     font-size: small;
     overflow: hidden;
+    padding-top: 5px;
+    padding-bottom: 40px;
+    -webkit-mask-image: linear-gradient(to bottom, rgb(99, 102, 107) 66%, transparent 100%);
+    mask-image: linear-gradient(to bottom, rgb(255, 255, 255) 66%, transparent 100%);
 }
 
 .page-header a {
