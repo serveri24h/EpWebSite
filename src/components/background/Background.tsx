@@ -60,7 +60,7 @@ const BackgroundSetter: React.FC = () => {
             const imageIntervalId = setInterval(() => {
                 const newDiv = backgroundDivId === "2" ? "1" : "2" 
                 setBackgroundDivId(newDiv)
-                if (newDiv == "1")
+                if (newDiv === "1")
                     setBackgroundImage1(newBgImage);
                 else
                     setBackgroundImage2(newBgImage)
@@ -125,7 +125,7 @@ const BackgroundSetter: React.FC = () => {
         return () => {
             clearInterval(scrollIntervalId);
         };
-    }, [position, direction]); // Re-run effect if position or direction changes
+    }, [position, direction, imageSize]); // Re-run effect if position or direction changes
 
 
     useEffect(() => {
@@ -138,7 +138,7 @@ const BackgroundSetter: React.FC = () => {
                 divRef.current.style.filter = 'sepia(50%) blur(2px)' ;
             }
         })
-    }, [position]); 
+    }, [position,imageSize]); 
 
     return (
         <>
@@ -158,7 +158,7 @@ const BackgroundSetter: React.FC = () => {
                     backgroundRepeat: 'no-repeat',
                     overflow: 'hidden',
                     backgroundImage: `url(${process.env.PUBLIC_URL}/images/${divId===1?backgroundImage1:backgroundImage2})`,
-                    opacity: `${Number(backgroundDivId==divId.toString())}`,
+                    opacity: `${Number(backgroundDivId===divId.toString())}`,
                     transition: "opacity 10s ease"
                 }}
             />   
