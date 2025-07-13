@@ -21,9 +21,9 @@ const HeaderLink:React.FC<{url:string, title:string}> = ({url, title}) => {
 const PageHeader: React.FC = () => {
     return (
         <div className='page-header'> 
-            <HeaderLink url='/songs' title='Music' />
-            <HeaderLink url='/band' title='Band' />
-            <HeaderLink url='/contact' title='Contact' />
+            <HeaderLink url='/#/songs' title='Music' />
+            <HeaderLink url='/#/band' title='Band' />
+            <HeaderLink url='/#/contact' title='Contact' />
         </div>
     )
 }
