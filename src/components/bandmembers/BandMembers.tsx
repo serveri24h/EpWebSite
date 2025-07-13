@@ -58,7 +58,7 @@ const BandMemberSelector:React.FC<BandMemberSelectorProps> = ({onSelection, n, n
 const BandMembers:React.FC = () => {
     const [selectedMember, setSelectedMember] = useState<number | null>(null);
     return (
-        <div>
+        <div className='band-member-selector-container'>
         <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
             {
                 MemberConfigList.map(

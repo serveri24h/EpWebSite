@@ -4,15 +4,8 @@ import './HeaderComponent.css';
 const HeaderLink:React.FC<{url:string, title:string}> = ({url, title}) => {
     return (          
         <a href={url}>
-            <div style={{
-                paddingLeft: '15px',
-                paddingRight: '15px',
-                marginLeft:'5px',
-                marginRight:'5px',
-                borderBottomLeftRadius: '5px',
-                borderBottomRightRadius: '5px',
-            }}>
-                <h1> {title} </h1>
+            <div className='page-header-link'>
+                <h1>{title}</h1>
             </div>
         </a>
     )

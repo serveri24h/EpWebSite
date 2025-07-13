@@ -5,7 +5,7 @@ import {ReactComponent as YouTubeLogo} from './Logos/youtube.svg';
 import {SongOption, SongList} from './songs'
 
 
-const YoutubeButton:React.FC<{setPlayer:any}> = ({setPlayer}) => {
+const YoutubeButton:React.FC<{setPlayer:any, x:number, y:number}> = ({setPlayer, x, y}) => {
     return (
         <g
             onClick={() => setPlayer('youtube')}
@@ -22,8 +22,8 @@ const YoutubeButton:React.FC<{setPlayer:any}> = ({setPlayer}) => {
                 stroke="none" 
             />
             <YouTubeLogo
-                x = '550'
-                y = '140'
+                x = {x}
+                y = {y}
                 stroke='black'
                 width='100px'   
                 height='75px'  
@@ -32,7 +32,7 @@ const YoutubeButton:React.FC<{setPlayer:any}> = ({setPlayer}) => {
     )
 }
 
-const SpotifyButton:React.FC<{setPlayer:any}> = ({setPlayer}) => {
+const SpotifyButton:React.FC<{setPlayer:any,x:number, y:number}> = ({setPlayer,x,y}) => {
     return (
         <g
             onClick={() => setPlayer('spotify')}
@@ -48,8 +48,8 @@ const SpotifyButton:React.FC<{setPlayer:any}> = ({setPlayer}) => {
                 stroke="none" 
             />
             <SpotifyLogo
-                x = '700'
-                y = '150'
+                x = {x}
+                y = {y}
                 stroke='black'
                 width='60px'   
                 height='60px'
@@ -62,13 +62,17 @@ const SpotifyButton:React.FC<{setPlayer:any}> = ({setPlayer}) => {
 const SubRect:React.FC<{
     x:number, 
     y:number, 
+    width?:number,
+    height?:number,
+    fontSize?:number,
     song:SongOption,
     isSelected:boolean, 
     setSong:Dispatch<SetStateAction<SongOption | null>>
-}> = ({ x, y, song, isSelected, setSong }) => {
+}> = ({ x, y, width, height, fontSize, song, isSelected, setSong }) => {
 
-    const w = 200;
-    const h = 40;
+    const w = width || 200;
+    const h = height || 40;
+    const f = fontSize || 14;
 
     const wDiff = 6;
     const hDiff = 8
@@ -131,7 +135,7 @@ const SubRect:React.FC<{
                 x={x + (w / 2)-selXDiff*2} 
                 y={y + (h / 2)+selXDiff*2} 
                 fill="black"
-                fontSize="14"
+                fontSize={`${f}`}
                 textAnchor="middle"
                 dominantBaseline="middle" 
                 fontFamily="PlayerFont, sans-serif"
@@ -142,14 +146,13 @@ const SubRect:React.FC<{
     );
 };
 
-const PlayerIframe:React.FC<{song:SongOption | null, player:string}> = ({song, player}) => {
-    console.log(song, player)
+const PlayerIframe:React.FC<{song:SongOption | null, player:string, width:number, height:number}> = ({song, player, width, height}) => {
     return (
         <div style={{ textAlign: 'center' }}>
         {song ? (
             player === 'youtube' ?
                 <iframe 
-                    width="560" height="315" src={song.youtubeUrl} 
+                    width={width} height={height} src={song.youtubeUrl} 
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={true}>
@@ -157,11 +160,11 @@ const PlayerIframe:React.FC<{song:SongOption | null, player:string}> = ({song, p
                 <iframe 
                     title={song.name}
                     src={song.spotifyUrl}  
-                    width="560" height="315" allowFullScreen={true} 
+                    width={width} height={height} allowFullScreen={true} 
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
                 </iframe>   
             ): 
-                <svg width="560" height="315">
+                <svg width={width} height={height}>
                     <rect x="0" y="0" width="560" height="315" fill="black" stroke="white" strokeWidth="2"        
                     rx="20"  
                     ry="20" />
@@ -184,8 +187,7 @@ const SvgWithHtml = () => {
     }
 
     return (
-      <svg width="1200" height="800" style={{
-      }}>
+      <svg width="1200" height="800">
         <defs>
             <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
                 <feDropShadow dx="-5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
@@ -215,11 +217,15 @@ const SvgWithHtml = () => {
         { /* Player Options */ }
         <YoutubeButton
             setPlayer={setPlayer}
+            x = {550}
+            y = {140}
         />
 
 
         <SpotifyButton
             setPlayer={setPlayer}
+            x={700}
+            y={150}
         />
 
         { /* Song List */}
@@ -241,22 +247,102 @@ const SvgWithHtml = () => {
                 <PlayerIframe
                     song={selectedSong} 
                     player={selectedPlayer}
+                    width={560}
+                    height={350}
                 /> 
             }
         </foreignObject>
       </svg>
     );
   };
-  
+
+
+const MobileView:React.FC = () => {
+
+    const [selectedSong, setSelectedSong] = useState<SongOption|null>(null); 
+    const [selectedPlayer, setSelectedPlayer] = useState<string>('youtube'); 
+
+    const setPlayer = (player:string) => {
+        console.log(player)
+        setSelectedPlayer(player);
+    }
+
+    return <>
+        <svg width="400" height="800">
+            <defs>
+                <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feDropShadow dx="-5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
+                    <feDropShadow dx="5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
+                </filter>
+                <pattern id="imageBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
+                    <image 
+                        href={`${process.env.PUBLIC_URL}/backgrounds/gray-metal-texture.jpg`} 
+                        width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
+                    />
+                </pattern>
+            </defs>
+
+            <rect x="50" y="100" width="300" height="500" fill="url(#imageBackground)" stroke="var(--dark-grey)" strokeWidth="1" filter="url(#drop-shadow)"     
+                rx="20"  
+                ry="20"
+                
+            />
+
+                    {
+            SongList.map((song, i)=>(
+                <SubRect 
+                    x={72+(i%2)*140} 
+                    y={200+Math.floor(i/2)*50}
+                    width={125}
+                    height={35}
+                    fontSize={11}
+                    isSelected={song===selectedSong} 
+                    song={song}
+                    setSong={setSelectedSong}
+                />
+            ))
+        }
+
+        { /* Player Options */ }
+        <YoutubeButton
+            setPlayer={setPlayer}
+            x={100}
+            y={112}
+        />
+
+        <SpotifyButton
+            setPlayer={setPlayer}
+            x={220}
+            y={120}
+        />
+        
+        <foreignObject x="75" y="360" width="250" height="220">
+            {
+                <PlayerIframe
+                    song={selectedSong} 
+                    player={selectedPlayer}
+                    width={250}
+                    height={220}
+                /> 
+            }
+        </foreignObject>
+
+
+        </svg>
+    </>
+}
 
 const PlayerComponent:React.FC = () =>{
+
+    const isMobile = window.innerWidth <= 768;
+
     return (
         <div style = {{ 
             display:'flex', 
             flexDirection:'column', 
             justifyContent:'center',
         }}>
-            <SvgWithHtml/>
+            { isMobile ?  <MobileView/>  : <SvgWithHtml/>}
         </div>
     )
 }

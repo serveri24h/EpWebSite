@@ -26,32 +26,50 @@ const BgImages = [
 
 const BackgroundSetter: React.FC = () => {
     const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-    const [backgroundImage, setBackgroundImage] = useState<string>(
-        `IMG3.JPG`
-    );
-    const [direction, setDirection] = useState<{ x: number; y: number }>({ x: 1, y: 1 }); // To track movement direction
-    const imageSize = 3; // Control the zoom level
     
-    // Reference for the div element
-    const divRef = useRef<HTMLDivElement | null>(null);
-    const speedFactor:number = 2000 // Larger this is sower the speed
+
+    // Pick two random images
+    const randomIndex = Math.floor(Math.random() * BgImages.length);
+    const [backgroundImage1, setBackgroundImage1] = useState<string>(
+        BgImages[randomIndex]
+    );
+    const [backgroundImage2, setBackgroundImage2] = useState<string>(
+        BgImages[(randomIndex+1)%BgImages.length]
+    );
+    const [backgroundDivId, setBackgroundDivId] = useState< "1" | "2">("1");
+    const [direction, setDirection] = useState<{ x: number; y: number }>({ x: 1, y: 1 }); // To track movement direction
+
+    // Use different factors for mobile and desktop
+    const isMobile = window.innerWidth <= 768;
+
+    const imageSize = isMobile ? 4: 2; // Control the zoom level
+    
+    // Reference for the div elemen
+    const divRef1 = useRef<HTMLDivElement | null>(null);
+    const divRef2 = useRef<HTMLDivElement | null>(null);
+    const speedFactor:number = 1000 // Larger this is slower the speed
 
     useEffect(() => {
         // Update the background image of the div
-        if (divRef.current) {
-            const parsedList = BgImages.filter((name) => name !== backgroundImage);
+        if (divRef1.current && divRef2.current) {
+            const parsedList = BgImages.filter((name) => !([backgroundImage1, backgroundImage2].includes(name)));
             const randomIndex = Math.floor(Math.random() * parsedList.length);
             const newBgImage = parsedList[randomIndex];
 
             // Update the background image every 10 seconds with an animation
             const imageIntervalId = setInterval(() => {
-                setBackgroundImage(newBgImage);
+                const newDiv = backgroundDivId === "2" ? "1" : "2" 
+                setBackgroundDivId(newDiv)
+                if (newDiv == "1")
+                    setBackgroundImage1(newBgImage);
+                else
+                    setBackgroundImage2(newBgImage)
             }, 20000);
 
             // Clear interval on component unmount
             return () => clearInterval(imageIntervalId);
         }
-    }, [backgroundImage]);
+    }, [backgroundDivId, backgroundImage1, backgroundImage2]);
 
     useEffect(() => {
         const scrollBackground = async () => {
@@ -101,62 +119,55 @@ const BackgroundSetter: React.FC = () => {
         };
 
         // Update background position every 10 milliseconds for continuous scroll
-        const scrollIntervalId = setInterval(scrollBackground, 30); // Smooth scroll effect
+        const scrollIntervalId = setInterval(scrollBackground, 60); // Smooth scroll effect
 
         // Cleanup function to clear intervals when the component unmounts
         return () => {
             clearInterval(scrollIntervalId);
         };
-    }, [position, direction ]); // Re-run effect if position or direction changes
+    }, [position, direction]); // Re-run effect if position or direction changes
 
 
     useEffect(() => {
         // Update the background position and size dynamically for the div
-        if (divRef.current) {
-            divRef.current.style.backgroundPosition = `-${position.x}px -${position.y}px`;
-            divRef.current.style.backgroundSize = `${imageSize * 100}%`;
-            divRef.current.style.backgroundRepeat = 'no-repeat';
-            divRef.current.style.filter = 'sepia(50%) blur(2px)' ;
-        }
+        [divRef1, divRef2].forEach(divRef=>{
+            if (divRef.current) {
+                divRef.current.style.backgroundPosition = `-${position.x}px -${position.y}px`;
+                divRef.current.style.backgroundSize = `${imageSize * 100}%`;
+                divRef.current.style.backgroundRepeat = 'no-repeat';
+                divRef.current.style.filter = 'sepia(50%) blur(2px)' ;
+            }
+        })
     }, [position]); 
 
     return (
-        <div
-            ref={divRef}
-            className='background-container'
-            style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: -1,
-                backgroundSize: `${imageSize * 100}%`,
-                backgroundRepeat: 'no-repeat',
-                overflow: 'hidden',
-                backgroundImage: `url(${process.env.PUBLIC_URL}/images/${backgroundImage})`
-            }}
-        >   
-            {/*  FOR DEBUGGING
-            <div style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                zIndex: 1000,
-                color: 'red',
-                padding: '10px',
-                fontFamily: 'monospace',
-            }}>
-                <p>Position: x = {position.x}, y = {position.y}</p>
-                <p>Image Size: {imageDimensions.width}x{imageDimensions.height}</p>
-                <p>Effective Image Size: {imageDimensions.width * imageSize}x{imageDimensions.height * imageSize}</p>
-                <p>Viewport Size: {window.innerWidth}x{window.innerHeight}</p>
-                <p>Zoom Factor: {imageSize}</p>
-            </div>
-            */}
-        </div>
+        <>
+        {
+            [1,2].map((divId=>{
+            return <div
+                ref={divId===1?divRef1:divRef2}
+                className='background-container'
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    zIndex: -1,
+                    backgroundSize: `${imageSize * 100}%`,
+                    backgroundRepeat: 'no-repeat',
+                    overflow: 'hidden',
+                    backgroundImage: `url(${process.env.PUBLIC_URL}/images/${divId===1?backgroundImage1:backgroundImage2})`,
+                    opacity: `${Number(backgroundDivId==divId.toString())}`,
+                    transition: "opacity 10s ease"
+                }}
+            />   
+            }))
+        }
+        </>
     );
 };
+
 
 export default BackgroundSetter;
 

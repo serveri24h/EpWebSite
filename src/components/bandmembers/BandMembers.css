@@ -15,11 +15,15 @@
     border: 1px solid #ddd;
     font-size: 18px;
 }
-  
-  /* Mobile responsiveness */
+
+.band-member-selector-container {
+  transform: scale(1.5);
+}
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
-    .band-member-container {
-      grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    .band-member-selector-container {
+      transform: scale(0.82);
     }
 }
   
