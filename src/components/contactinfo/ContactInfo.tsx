@@ -10,8 +10,8 @@ const ContactInfo:React.FC = () => {
             </div>
             <h3>Find Us</h3>
             <p>
-                <a href="https://youtube.com" target="_blank">YouTube</a> | 
-                <a href="https://spotify.com" target="_blank">Spotify</a>
+                <a href="https://youtube.com" target="_blank" rel="noreferrer">YouTube</a> | 
+                <a href="https://spotify.com" target="_blank" rel="noreferrer">Spotify</a>
             </p>
         </div>
     )

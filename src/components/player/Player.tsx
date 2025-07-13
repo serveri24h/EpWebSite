@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
+import React, { Dispatch, SetStateAction, useState } from "react"
 import './Player.css';
 import {ReactComponent as SpotifyLogo} from './Logos/spotify.svg';
 import {ReactComponent as YouTubeLogo} from './Logos/youtube.svg';
@@ -155,6 +155,7 @@ const PlayerIframe:React.FC<{song:SongOption | null, player:string}> = ({song, p
                     referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={true}>
                 </iframe> :
                 <iframe 
+                    title={song.name}
                     src={song.spotifyUrl}  
                     width="560" height="315" allowFullScreen={true} 
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">

@@ -31,7 +31,6 @@ const BackgroundSetter: React.FC = () => {
     );
     const [direction, setDirection] = useState<{ x: number; y: number }>({ x: 1, y: 1 }); // To track movement direction
     const imageSize = 3; // Control the zoom level
-    const imageDimensions = { width: 1600, height: 1066 };
     
     // Reference for the div element
     const divRef = useRef<HTMLDivElement | null>(null);
@@ -57,6 +56,7 @@ const BackgroundSetter: React.FC = () => {
     useEffect(() => {
         const scrollBackground = async () => {
             //
+            const imageDimensions = { width: 1600, height: 1066 };
             const viewW = window.innerWidth;
             const viewH = imageDimensions.height*(viewW/imageDimensions.width);  
             const speed = Math.ceil(viewW/speedFactor);
@@ -107,7 +107,7 @@ const BackgroundSetter: React.FC = () => {
         return () => {
             clearInterval(scrollIntervalId);
         };
-    }, [position, direction]); // Re-run effect if position or direction changes
+    }, [position, direction ]); // Re-run effect if position or direction changes
 
 
     useEffect(() => {
