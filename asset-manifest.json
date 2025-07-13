@@ -1,20 +1,22 @@
 {
   "files": {
-    "main.css": "/puolenmetrinmetsa/static/css/main.a8098fa6.css",
-    "main.js": "/puolenmetrinmetsa/static/js/main.c77f9ab7.js",
+    "main.css": "/puolenmetrinmetsa/static/css/main.ad98bf2e.css",
+    "main.js": "/puolenmetrinmetsa/static/js/main.6640a82d.js",
     "static/js/453.36c617fc.chunk.js": "/puolenmetrinmetsa/static/js/453.36c617fc.chunk.js",
+    "static/media/button-background.jpg": "/puolenmetrinmetsa/static/media/button-background.f7c5fce41cb774ace4e9.jpg",
+    "static/media/old-paper.jpg": "/puolenmetrinmetsa/static/media/old-paper.cad4483c90a093175496.jpg",
     "static/media/SnowKei.ttf": "/puolenmetrinmetsa/static/media/SnowKei.e1926d05d0180c35be68.ttf",
     "static/media/iInstead2.otf": "/puolenmetrinmetsa/static/media/iInstead2.0a8a72ed8d27b0e9cbe1.otf",
     "static/media/BandFont3.otf": "/puolenmetrinmetsa/static/media/BandFont3.853bd0c5c41c704e4c94.otf",
     "static/media/youtube.svg": "/puolenmetrinmetsa/static/media/youtube.b6b2c39fabd9715f55860c437abb110d.svg",
     "static/media/spotify.svg": "/puolenmetrinmetsa/static/media/spotify.cb0ec48de48ec1589ce5b4b3730071e6.svg",
     "index.html": "/puolenmetrinmetsa/index.html",
-    "main.a8098fa6.css.map": "/puolenmetrinmetsa/static/css/main.a8098fa6.css.map",
-    "main.c77f9ab7.js.map": "/puolenmetrinmetsa/static/js/main.c77f9ab7.js.map",
+    "main.ad98bf2e.css.map": "/puolenmetrinmetsa/static/css/main.ad98bf2e.css.map",
+    "main.6640a82d.js.map": "/puolenmetrinmetsa/static/js/main.6640a82d.js.map",
     "453.36c617fc.chunk.js.map": "/puolenmetrinmetsa/static/js/453.36c617fc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a8098fa6.css",
-    "static/js/main.c77f9ab7.js"
+    "static/css/main.ad98bf2e.css",
+    "static/js/main.6640a82d.js"
   ]
 }
