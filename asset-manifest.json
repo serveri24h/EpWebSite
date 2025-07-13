@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/EpWebSite/static/css/main.dca636b2.css",
+    "main.js": "/EpWebSite/static/js/main.75f1b54b.js",
+    "static/js/453.36c617fc.chunk.js": "/EpWebSite/static/js/453.36c617fc.chunk.js",
+    "static/media/SnowKei.ttf": "/EpWebSite/static/media/SnowKei.e1926d05d0180c35be68.ttf",
+    "static/media/iInstead2.otf": "/EpWebSite/static/media/iInstead2.0a8a72ed8d27b0e9cbe1.otf",
+    "static/media/BandFont3.otf": "/EpWebSite/static/media/BandFont3.853bd0c5c41c704e4c94.otf",
+    "static/media/youtube.svg": "/EpWebSite/static/media/youtube.b6b2c39fabd9715f55860c437abb110d.svg",
+    "static/media/spotify.svg": "/EpWebSite/static/media/spotify.cb0ec48de48ec1589ce5b4b3730071e6.svg",
+    "index.html": "/EpWebSite/index.html",
+    "main.dca636b2.css.map": "/EpWebSite/static/css/main.dca636b2.css.map",
+    "main.75f1b54b.js.map": "/EpWebSite/static/js/main.75f1b54b.js.map",
+    "453.36c617fc.chunk.js.map": "/EpWebSite/static/js/453.36c617fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dca636b2.css",
+    "static/js/main.75f1b54b.js"
+  ]
+}
