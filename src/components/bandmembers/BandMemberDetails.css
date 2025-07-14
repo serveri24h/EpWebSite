@@ -29,7 +29,7 @@
   background-color: #fdf6e39f; /* soft yellowish tint */
   padding: 1.5rem;
   margin: 1.5rem auto;
-  width: 80%;
+  width: 75%;
   max-width: 700px;
   font-size: 1.2rem;
   line-height: 1.8; /* generous line spacing */
@@ -88,5 +88,10 @@
     }
     .close-button {
         top: 30px;
+    }
+    .text-contents {
+      width: 85%;
+      font-size: 1rem;
+      padding: 0.5rem;
     }
 }
