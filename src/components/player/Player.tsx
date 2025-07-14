@@ -323,7 +323,12 @@ const MobileView:React.FC<PlayerViewProps> = ({
         <svg width="400" height="800">
             <SvgDefs/>
 
-            <rect x="50" y="100" width="300" height="500" fill="url(#imageBackground)" stroke="var(--dark-grey)" strokeWidth="1" filter="url(#drop-shadow)"     
+            {/* Antennas */}
+            <line x1="325" y1="160" x2="315" y2="100" stroke="var(--dark-grey)" strokeWidth="6"/> 
+            <circle cx="315" cy="100" r="3" stroke="var(--dark-grey)" strokeWidth="3"/> 
+
+            {/* The main component */}
+            <rect x="50" y="150" width="300" height="500" fill="url(#imageBackground)" stroke="var(--dark-grey)" strokeWidth="1" filter="url(#drop-shadow)"     
                 rx="20"  
                 ry="20"
                 
@@ -332,7 +337,7 @@ const MobileView:React.FC<PlayerViewProps> = ({
             { SongList.map((song, i)=>(
                 <SongButton 
                     x={72+(i%2)*140} 
-                    y={200+Math.floor(i/2)*50}
+                    y={250+Math.floor(i/2)*50}
                     width={125}
                     height={35}
                     fontSize={11}
@@ -346,19 +351,19 @@ const MobileView:React.FC<PlayerViewProps> = ({
             <YoutubeButton
                 setPlayer={setPlayer}
                 x={100}
-                y={112}
+                y={162}
             />
 
             <SpotifyButton
                 setPlayer={setPlayer}
                 x={220}
-                y={120}
+                y={180}
             />
             <PlayerIframe
                 song={selectedSong} 
                 player={selectedPlayer}
                 x={65}
-                y={360}
+                y={410}
                 width={270}
                 height={220}
             /> 
