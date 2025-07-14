@@ -82,18 +82,18 @@
   font-weight: bold;
 }
 
-@media (max-width:763) {
+@media (max-width:768px) {
     .contact-title {
         font-size: 2rem;
     }
     .find-us-title {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
     .contact-item {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
     }
-    .social-link {
-        font-size: 1.1rem;
+    .social-links {
+        font-size: 1.5rem;
     }
 
 }

@@ -107,6 +107,7 @@ const SongButton:React.FC<{
                     L ${x - wDiff},${y + hDiff + tlTriangleDiff}
                     Z`
                 }
+                style={{filter: 'drop-shadow(0 0 10px rgba(0, 0, 0, 0.64))'}}
             />
 
             {/* Song Button */}
@@ -127,10 +128,12 @@ const SongButton:React.FC<{
             <text
                 style={{
                     pointerEvents:'none',
+                    fontFamily: 'Chivo, sans-serif',
+                    textShadow: '2px 2px 3px #bad0daff, -2px -2px 5px #7c8081ff'
                 }}
                 x={x + (w / 2)-selXDiff*2} 
                 y={y + (h / 2)+selXDiff*2} 
-                fill={"#10123bff"}
+                fill={"#181818ff"}
                 fontSize={`${f}`}
                 textAnchor="middle"
                 dominantBaseline="middle" 

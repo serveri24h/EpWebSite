@@ -3,6 +3,7 @@ html {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo&display=swap');
 
 /* Fonts */
 @font-face {
@@ -53,7 +54,6 @@ html {
   --mist: #c3d9c6;
   --dark-fir: #1e3523;
   --frost: #e0ece2;
-  --font: 'Quicksand', sans-serif;
 
   /*SHADOWS*/
   --deep-blue-shadow: #ffffff71;
