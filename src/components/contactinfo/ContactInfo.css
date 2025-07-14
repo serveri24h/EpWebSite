@@ -1,7 +1,99 @@
+
+
 .contact-info-container {
-    color: var(--snow-white);
-    text-shadow: 
-        2px 2px 5px var(--deep-blue),
-        5px 5px 25px black,
-        -5px 5px 25px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  min-height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.contact-card {
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  color: var(--dark-fir);
+}
+
+.contact-title {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: var(--frost);
+  text-shadow: 2px 2px var(--pine);
+  font-weight: 600;
+}
+
+.contact-item {
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+}
+
+.label {
+  font-weight: 600;
+  color: var(--mist);
+  text-shadow: 2px 2px var(--pine);
+}
+
+.contact-link {
+  margin-left: 0.3rem;
+  color: var(--frost);
+  text-shadow: 2px 2px var(--pine);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--snow);
+  text-decoration: underline;
+}
+
+.find-us-title {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--mist);
+  text-shadow: 2px 2px var(--pine);
+  font-weight: 500;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 3rem;
+}
+
+.social-link {
+  color: var(--frost);
+  text-shadow: 2px 2px var(--pine);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: var(--snow);
+  text-decoration: underline;
+}
+
+.divider {
+  color: var(--mist);
+  font-weight: bold;
+}
+
+@media (max-width:763) {
+    .contact-title {
+        font-size: 2rem;
+    }
+    .find-us-title {
+        font-size: 1.4rem;
+    }
+    .contact-item {
+        font-size: 1.1rem;
+    }
+    .social-link {
+        font-size: 1.1rem;
+    }
+
 }
