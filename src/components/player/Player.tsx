@@ -59,7 +59,7 @@ const SpotifyButton:React.FC<{setPlayer:any,x:number, y:number}> = ({setPlayer,x
 }
 
 
-const SubRect:React.FC<{
+const SongButton:React.FC<{
     x:number, 
     y:number, 
     width?:number,
@@ -80,54 +80,36 @@ const SubRect:React.FC<{
     const selYDiff = isSelected?5:0;
     const tlTriangleDiff = 5
 
-
     return (
         <g className="song-option">
             <defs>
-                <pattern id="buttonBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
-                    <image 
-                        href={`${process.env.PUBLIC_URL}/backgrounds/button-background.jpg`} 
-                        width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
-                    />
-                </pattern>
-                <pattern id="buttonBackgroundSide" patternUnits="userSpaceOnUse" width="1200" height="800">
-                    <image 
-                        href={`${process.env.PUBLIC_URL}/backgrounds/button-background-side.jpg`} 
-                        width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
-                    />
-                </pattern>
+ 
             </defs>
-            {/* bl corner */}
-            <rect
-                x={x-wDiff}
-                y={y+hDiff+20}
-                width={w-20}
-                height={h-20}
-                fill={"url(#buttonBackgroundSide)"}
+            {/* Song button pedastol */}
+            <path
+                fill="url(#buttonBackgroundSide)"
                 strokeWidth="1"
-                rx="10"  
-                ry="10"
+                d={
+                    `M ${x + 5},${y + 1 + selYDiff}
+                    L ${x},${y + hDiff + tlTriangleDiff + 1}
+                    L ${x - wDiff},${y + hDiff + tlTriangleDiff}
+                    L ${x - wDiff},${y + hDiff + 30}
+                    L ${x - wDiff},${y + hDiff + h - 10}
+                    A 10,10 0 0 0 ${x - wDiff + 10},${y + hDiff + h}
+                    L ${x + w - wDiff - 20},${y + hDiff + h}
+                    L ${x + 50 - wDiff},${y + hDiff + h}
+                    L ${x + w - wDiff - 7},${y + hDiff + h}
+                    L ${x + w - 5},${y + h}
+                    L ${x + w - wDiff - 8},${y + h}
+                    L ${x + w - wDiff - 7},${y + hDiff + 20}
+                    L ${x + 50 - wDiff},${y + hDiff + 20}
+                    L ${x + 50 - wDiff},${y + hDiff + tlTriangleDiff}
+                    L ${x - wDiff},${y + hDiff + tlTriangleDiff}
+                    Z`
+                }
             />
-            {/* right side filler rectangle */}
-            <rect
-                x={x+50-wDiff}
-                y={y+hDiff+20}
-                width={w-50-7}
-                height={h-20}
-                fill={"url(#buttonBackgroundSide)"}
-                strokeWidth="1"
-            />
-            {/* top side filler rectangle */}
-            <rect
-                x={x-wDiff}
-                y={y+hDiff+tlTriangleDiff}
-                width={w}
-                height={30-tlTriangleDiff}
-                fill={"url(#buttonBackgroundSide)"}
-                strokeWidth="1"
-            />
-            <polygon points={`${x-wDiff},${y+hDiff+tlTriangleDiff} ${x+5},${y+1+selYDiff} ${x},${y+hDiff+tlTriangleDiff+1}`} fill="url(#buttonBackgroundSide)" />
-            <polygon points={`${x+w-wDiff-7},${y+h+hDiff} ${x+w-wDiff-8},${y+h} ${x+w-5},${y+h}`} fill="url(#buttonBackgroundSide)"/>
+
+            {/* Song Button */}
             <rect
                 className="song-button"
                 x={x-selXDiff}
@@ -160,40 +142,73 @@ const SubRect:React.FC<{
     );
 };
 
-const PlayerIframe:React.FC<{song:SongOption | null, player:string, width:number, height:number}> = ({song, player, width, height}) => {
-    return (
-        <div style={{ textAlign: 'center', /* height: !!song?"100%":"0%", transition: "height 1s ease" */}}>
-        {song ? (
-            player === 'youtube' ?
-                <iframe 
-                    className="iframe-spotify"
-                    width={width} height={height} src={song.youtubeUrl} 
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={true}>
-                </iframe> :
-                <iframe 
-                    className="iframe-spotify"
-                    title={song.name}
-                    src={song.spotifyUrl}  
-                    width={width} height={height} 
-                    allowFullScreen={true} 
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
-                >
-                </iframe>   
-            ): 
-                /*<svg width={width} height={height}>
-                    <rect x="0" y="0" width={width} height={height} fill="black" stroke="white" strokeWidth="2"        
-                    rx="20"  
-                    ry="20" />
-                    <line x1="60" y1="315" x2="500" y2="0" stroke="white" strokeWidth="2" />
-                </svg>
-                */
-                <></>
-        }
-
-      </div>
-    )
+const PlayerIframe:React.FC<{
+    song:SongOption | null, 
+    player:string, 
+    x:number,
+    y:number,
+    width:number, 
+    height:number
+}> = ({song, player, width, height, x=0, y=0}) => {
+    return <>
+        <defs>
+            <clipPath id="roundedClip">
+            <rect
+                x={x}
+                y={y}
+                width={width}
+                height={height}
+                rx={25}
+                ry={25}
+            />
+            </clipPath>
+        </defs>
+        <g clipPath="url(#roundedClip)">
+            <rect
+                fill="black"
+                x={x}
+                y={y}
+                width={width}
+                height={height}
+            />
+            <polygon
+                fill="url(#buttonBackgroundSide)"
+                points={`${x},${y} ${x+width},${y} ${x},${y+height}`}
+                style={{
+                    transform: `translateX(${!!song ? -width : 0}px)`,
+                    transition: "transform 1s ease-in-out",
+                }}
+            />
+            <polygon
+                fill="url(#buttonBackgroundSide)"
+                points={`${x+width},${y} ${x+width},${y+height} ${x},${y+height}`}
+                style={{
+                    transform: `translateX(${!!song ? width : 0}px)`,
+                    transition: "transform 1s ease-in-out",
+                }}
+            />
+            { song && <foreignObject x={x} y={y} width={width} height={height}>
+                {player === 'youtube' ?
+                    <iframe 
+                        className="iframe-spotify"
+                        width={width} height={height} src={song.youtubeUrl} 
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={true}>
+                    </iframe> :
+                    <iframe 
+                        className="iframe-spotify"
+                        title={song.name}
+                        src={song.spotifyUrl}  
+                        width={width} height={height} 
+                        allowFullScreen={true} 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                    >
+                    </iframe>
+                }   
+            </foreignObject> }
+        </g>
+    </>
 }
 
 interface PlayerViewProps {
@@ -203,6 +218,32 @@ interface PlayerViewProps {
     setPlayer: (player:string)=>void;
 }
 
+const SvgDefs: React.FC = ()=>{
+    return <defs>
+        <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="-5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
+            <feDropShadow dx="5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
+        </filter>
+        <pattern id="imageBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
+            <image 
+                href={`${process.env.PUBLIC_URL}/backgrounds/gray-metal-texture.jpg`} 
+                width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
+            />
+        </pattern>
+        <pattern id="buttonBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
+            <image 
+                href={`${process.env.PUBLIC_URL}/backgrounds/button-background.jpg`} 
+                width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
+            />
+        </pattern>
+        <pattern id="buttonBackgroundSide" patternUnits="userSpaceOnUse" width="1200" height="800">
+            <image 
+                href={`${process.env.PUBLIC_URL}/backgrounds/button-background-side.jpg`} 
+                width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
+            />
+        </pattern>
+    </defs>
+}
 
 const DesktopView: React.FC<PlayerViewProps>= ({
     selectedSong, 
@@ -212,19 +253,7 @@ const DesktopView: React.FC<PlayerViewProps>= ({
 }) => {
 
     return <svg width="1200" height="800">
-        <defs>
-            <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow dx="-5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
-                <feDropShadow dx="5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
-            </filter>
-            <pattern id="imageBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
-                <image 
-                    href={`${process.env.PUBLIC_URL}/backgrounds/gray-metal-texture.jpg`} 
-                    width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
-                />
-            </pattern>
-        </defs>
-
+        <SvgDefs/>
 
         {/* Antennas */}
         <line x1="900" y1="25" x2="1005" y2="130" stroke="var(--dark-grey)" strokeWidth="6"/> 
@@ -236,7 +265,6 @@ const DesktopView: React.FC<PlayerViewProps>= ({
             ry="20"
             
         />
-
 
         { /* Player Options */ }
         <YoutubeButton
@@ -255,7 +283,7 @@ const DesktopView: React.FC<PlayerViewProps>= ({
         { /* Song List */}
         {
             SongList.map((song, i)=>(
-                <SubRect 
+                <SongButton 
                     x={150} 
                     y={165+65*i}
                     isSelected={song===selectedSong} 
@@ -266,16 +294,16 @@ const DesktopView: React.FC<PlayerViewProps>= ({
         }
 
         { /* Player as Iframe  */}
-        <foreignObject x="350" y="225" width="750" height="400">
             {
                 <PlayerIframe
                     song={selectedSong} 
                     player={selectedPlayer}
-                    width={560}
+                    x={410}
+                    y={225}
+                    width={600}
                     height={320}
                 /> 
             }
-        </foreignObject>
     </svg>
 }
 
@@ -290,18 +318,7 @@ const MobileView:React.FC<PlayerViewProps> = ({
 
     return <>
         <svg width="400" height="800">
-            <defs>
-                <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feDropShadow dx="-5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
-                    <feDropShadow dx="5" dy="5" stdDeviation="25" flood-color="var(--deep-blue-shadow)" />
-                </filter>
-                <pattern id="imageBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
-                    <image 
-                        href={`${process.env.PUBLIC_URL}/backgrounds/gray-metal-texture.jpg`} 
-                        width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
-                    />
-                </pattern>
-            </defs>
+            <SvgDefs/>
 
             <rect x="50" y="100" width="300" height="500" fill="url(#imageBackground)" stroke="var(--dark-grey)" strokeWidth="1" filter="url(#drop-shadow)"     
                 rx="20"  
@@ -310,7 +327,7 @@ const MobileView:React.FC<PlayerViewProps> = ({
             />
 
             { SongList.map((song, i)=>(
-                <SubRect 
+                <SongButton 
                     x={72+(i%2)*140} 
                     y={200+Math.floor(i/2)*50}
                     width={125}
@@ -334,17 +351,14 @@ const MobileView:React.FC<PlayerViewProps> = ({
                 x={220}
                 y={120}
             />
-            
-            <foreignObject x="65" y="360" width="270" height="220">
-                {
-                    <PlayerIframe
-                        song={selectedSong} 
-                        player={selectedPlayer}
-                        width={270}
-                        height={220}
-                    /> 
-                }
-            </foreignObject>
+            <PlayerIframe
+                song={selectedSong} 
+                player={selectedPlayer}
+                x={65}
+                y={360}
+                width={270}
+                height={220}
+            /> 
         </svg>
     </>
 }
