@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './BandMembers.css';
 import BandMemberDetails, {MemberConfig, MemberConfigList} from './BandMemberDetails';
 
