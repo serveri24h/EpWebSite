@@ -8,21 +8,7 @@ html {
 /* Fonts */
 @font-face {
   font-family: 'BandNameFont';
-  src: url('fonts/BandFont3.otf') format('opentype');
-  font-weight: normal; 
-  font-style: normal; 
-}
-
-@font-face {
-  font-family: 'AlbumNameFont';
-  src: url('fonts/SnowKei.ttf') format('opentype');
-  font-weight: normal; 
-  font-style: normal; 
-}
-
-@font-face {
-  font-family: 'PlayerFont';
-  src: url('fonts/iInstead2.otf') format('opentype');
+  src: url('/public/fonts/BandNameFont.otf') format('opentype');
   font-weight: normal; 
   font-style: normal; 
 }

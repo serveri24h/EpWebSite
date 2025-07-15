@@ -377,7 +377,6 @@ const PlayerComponent:React.FC = () => {
     const [selectedPlayer, setSelectedPlayer] = useState<string>('youtube'); 
 
     const setPlayer = (player:string) => {
-        console.log(player)
         setSelectedPlayer(player);
     }
     

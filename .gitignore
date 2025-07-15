@@ -24,3 +24,5 @@ yarn-error.log*
 
 #wsl
 *:Zone.Identifier
+images_edit/
+bu/

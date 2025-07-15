@@ -6,7 +6,7 @@
     flex-direction:row;
     width:100%;
     color: var(--winter-white);
-    background-image: url("/public/backgrounds/button-background.jpg");
+    background-image: url("/public/images/textures/button-background.jpg");
     justify-content:center;
     font-family: BandNameFont, sans-serif;
     font-size: small;

@@ -1,0 +1,42 @@
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  min-height: 60vh;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.timer-box {
+  background-image: url("/public/images/textures/button-background-side.jpg");
+  background-size: 400%;
+  background-position: 55% 50%;
+  border: 1px solid var(--mist);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 10px 30px rgba(46, 77, 56, 0.1);
+  text-align: center;
+  color: var(--dark-fir);
+  max-width: 500px;
+  width: 100%;
+}
+
+.timer-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: var(--pine);
+  font-weight: 600;
+}
+
+.timer-count {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--dark-fir);
+  margin: 0.5rem 0;
+}
+
+.timer-subtext {
+  font-size: 1rem;
+  color: var(--pine);
+  opacity: 0.85;
+}

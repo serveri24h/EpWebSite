@@ -157,7 +157,7 @@ const BackgroundSetter: React.FC = () => {
                     backgroundSize: `${imageSize * 100}%`,
                     backgroundRepeat: 'no-repeat',
                     overflow: 'hidden',
-                    backgroundImage: `url(${process.env.PUBLIC_URL}/images/${divId===1?backgroundImage1:backgroundImage2})`,
+                    backgroundImage: `url(${process.env.PUBLIC_URL}/images/pagebackground/${divId===1?backgroundImage1:backgroundImage2})`,
                     opacity: `${Number(backgroundDivId===divId.toString())}`,
                     transition: "opacity 10s ease"
                 }}

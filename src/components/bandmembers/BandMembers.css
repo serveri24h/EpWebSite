@@ -14,6 +14,7 @@
     padding: 20px;
     border: 1px solid #ddd;
     font-size: 18px;
+    z-index: 1;
 }
 
 .band-member-selector-container {
@@ -28,7 +29,8 @@
 }
   
 .member-mini-image:hover {
-    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8));
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8))
+            drop-shadow(0 0 20px rgba(0, 255, 0, 0.6));
     cursor: pointer; 
     z-index: 1000;
 }

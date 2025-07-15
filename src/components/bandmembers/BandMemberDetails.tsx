@@ -107,7 +107,7 @@ const BandMemberDetails:React.FC<{data:MemberConfig, onClose:any}> = ({data, onC
                     <h2 style={{fontFamily: 'BandNameFont, sans-serif'}}>{data.name}</h2>
                     <h3 style={{fontFamily: 'BandNameFont, sans-serif'}}>{data.responsibility}</h3>
                     <img 
-                        src={`${process.env.PUBLIC_URL}/bandmembers/${name.toLowerCase()}.jpg`} 
+                        src={`${process.env.PUBLIC_URL}/images/bandmembers/${name.toLowerCase()}.jpg`} 
                         alt="Logo"
                         style={{ 
                             maxWidth: '100%',  // Scale the image to fit the width
