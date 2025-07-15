@@ -17,7 +17,7 @@ export const MemberConfigList = [
     {
         n:0,
         name:"Severi",
-        responsibility:"Composing - Lyrics - Vocals - Guitars - Keyboards - Synths",
+        responsibility:"Composing - Lyrics - Vocals - Guitars - Keys",
         xOffset:-260,
         yOffset:-100,
         width:1200,
@@ -27,7 +27,7 @@ export const MemberConfigList = [
     {
         n:1,
         name:"Sandy",
-        responsibility:"Guitars - Beats & Styles",
+        responsibility:"Guitars - Coproduction",
         xOffset:190,
         yOffset:80,
         width:400,
@@ -36,7 +36,7 @@ export const MemberConfigList = [
     }, 
     {
         n:2,
-        responsibility:"Mixing",
+        responsibility:"Mixing - Recording",
         name:"Juuso",
         xOffset:175,
         yOffset:220,

@@ -3,15 +3,14 @@ import PlayerComponent from '../../components/player/Player';
 import CountdownTimer from '../../components/countdowntimer/CountDownTimer';
 
 const Songs:React.FC = () => {
-    const countDownDate = new Date('2025-07-15T19:20:00');
-    
+
+    const countDownDate = new Date('2025-07-18T00:00:00');
     const [now, setNow] = useState(Date.now());
 
     useEffect(() => {
         const interval = setInterval(() => {
             setNow(Date.now());
         }, 1000); // update every second
-
         return () => clearInterval(interval); // clean up on unmount
     }, []);
     return (
