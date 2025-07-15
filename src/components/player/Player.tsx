@@ -229,19 +229,19 @@ const SvgDefs: React.FC = ()=>{
         </filter>
         <pattern id="imageBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
             <image 
-                href={`${process.env.PUBLIC_URL}/backgrounds/gray-metal-texture.jpg`} 
+                href={`${process.env.PUBLIC_URL}/images/textures/gray-metal-texture.jpg`} 
                 width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
             />
         </pattern>
         <pattern id="buttonBackground" patternUnits="userSpaceOnUse" width="1200" height="800">
             <image 
-                href={`${process.env.PUBLIC_URL}/backgrounds/button-background.jpg`} 
+                href={`${process.env.PUBLIC_URL}/images/textures/button-background.jpg`} 
                 width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
             />
         </pattern>
         <pattern id="buttonBackgroundSide" patternUnits="userSpaceOnUse" width="1200" height="800">
             <image 
-                href={`${process.env.PUBLIC_URL}/backgrounds/button-background-side.jpg`} 
+                href={`${process.env.PUBLIC_URL}/images/textures/button-background-side.jpg`} 
                 width="1200" height="800" preserveAspectRatio="xMidYMid slice" 
             />
         </pattern>
