@@ -1,22 +1,21 @@
 {
   "files": {
-    "main.css": "/puolenmetrinmetsa/static/css/main.2e4779fd.css",
-    "main.js": "/puolenmetrinmetsa/static/js/main.228edbda.js",
+    "main.css": "/puolenmetrinmetsa/static/css/main.0bb6af78.css",
+    "main.js": "/puolenmetrinmetsa/static/js/main.941f1ccd.js",
     "static/js/453.36c617fc.chunk.js": "/puolenmetrinmetsa/static/js/453.36c617fc.chunk.js",
-    "static/media/button-background.jpg": "/puolenmetrinmetsa/static/media/button-background.f7c5fce41cb774ace4e9.jpg",
-    "static/media/old-paper.jpg": "/puolenmetrinmetsa/static/media/old-paper.cad4483c90a093175496.jpg",
-    "static/media/SnowKei.ttf": "/puolenmetrinmetsa/static/media/SnowKei.e1926d05d0180c35be68.ttf",
-    "static/media/iInstead2.otf": "/puolenmetrinmetsa/static/media/iInstead2.0a8a72ed8d27b0e9cbe1.otf",
-    "static/media/BandFont3.otf": "/puolenmetrinmetsa/static/media/BandFont3.853bd0c5c41c704e4c94.otf",
+    "static/media/old-paper.jpg": "/puolenmetrinmetsa/static/media/old-paper.f5d7aeb29ca37d9e4372.jpg",
+    "static/media/button-background.jpg": "/puolenmetrinmetsa/static/media/button-background.c05e4050b56086076a0e.jpg",
+    "static/media/button-background-side.jpg": "/puolenmetrinmetsa/static/media/button-background-side.c79dc6e4631140359fad.jpg",
+    "static/media/BandNameFont.otf": "/puolenmetrinmetsa/static/media/BandNameFont.853bd0c5c41c704e4c94.otf",
     "static/media/youtube.svg": "/puolenmetrinmetsa/static/media/youtube.b6b2c39fabd9715f55860c437abb110d.svg",
     "static/media/spotify.svg": "/puolenmetrinmetsa/static/media/spotify.cb0ec48de48ec1589ce5b4b3730071e6.svg",
     "index.html": "/puolenmetrinmetsa/index.html",
-    "main.2e4779fd.css.map": "/puolenmetrinmetsa/static/css/main.2e4779fd.css.map",
-    "main.228edbda.js.map": "/puolenmetrinmetsa/static/js/main.228edbda.js.map",
+    "main.0bb6af78.css.map": "/puolenmetrinmetsa/static/css/main.0bb6af78.css.map",
+    "main.941f1ccd.js.map": "/puolenmetrinmetsa/static/js/main.941f1ccd.js.map",
     "453.36c617fc.chunk.js.map": "/puolenmetrinmetsa/static/js/453.36c617fc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2e4779fd.css",
-    "static/js/main.228edbda.js"
+    "static/css/main.0bb6af78.css",
+    "static/js/main.941f1ccd.js"
   ]
 }
