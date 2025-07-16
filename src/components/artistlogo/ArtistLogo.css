@@ -63,7 +63,7 @@
 
     .artist-logo-large {
         font-size: 2em;
-        margin-top: -0.4em;
+        margin-top: -0.2em;
     }
 
     .artist-logo-bottom-large {
@@ -72,13 +72,13 @@
     }
 
     .artist-logo-mini {
-        margin-top: 0em;
+        margin-top: 2em;
         font-size: 0.6em;
     }
 
     .artist-logo-bottom-mini {
+        margin-top: 0.4em;
         font-size: 0.8em;
         margin-left: 0.025em;
-        margin-bottom: 0em;
     }
 }
