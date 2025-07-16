@@ -16,7 +16,7 @@ const PageHeader: React.FC = () => {
     return (
         <div className='header-container' >
             <div className='artist-logo-link'>
-                <a href='/'>
+                <a href='/puolenmetrinmetsa/'>
                     <ArtistLogo size='mini'/>
                 </a>
             </div>
