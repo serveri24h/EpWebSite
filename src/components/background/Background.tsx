@@ -47,7 +47,7 @@ const BackgroundSetter: React.FC = () => {
     // Reference for the div elemen
     const divRef1 = useRef<HTMLDivElement | null>(null);
     const divRef2 = useRef<HTMLDivElement | null>(null);
-    const speedFactor:number = 1000 // Larger this is slower the speed
+    const speedFactor:number = 500 // Larger this is slower the speed
 
     useEffect(() => {
         // Update the background image of the div
@@ -119,7 +119,7 @@ const BackgroundSetter: React.FC = () => {
         };
 
         // Update background position every 10 milliseconds for continuous scroll
-        const scrollIntervalId = setInterval(scrollBackground, 60); // Smooth scroll effect
+        const scrollIntervalId = setInterval(scrollBackground, 120); // Smooth scroll effect
 
         // Cleanup function to clear intervals when the component unmounts
         return () => {
@@ -134,7 +134,6 @@ const BackgroundSetter: React.FC = () => {
             if (divRef.current) {
                 divRef.current.style.backgroundPosition = `-${position.x}px -${position.y}px`;
                 divRef.current.style.backgroundSize = `${imageSize * 100}%`;
-                divRef.current.style.backgroundRepeat = 'no-repeat';
                 divRef.current.style.filter = 'sepia(50%) blur(2px)' ;
             }
         })
@@ -159,7 +158,7 @@ const BackgroundSetter: React.FC = () => {
                     overflow: 'hidden',
                     backgroundImage: `url(${process.env.PUBLIC_URL}/images/pagebackground/${divId===1?backgroundImage1:backgroundImage2})`,
                     opacity: `${Number(backgroundDivId===divId.toString())}`,
-                    transition: "opacity 10s ease"
+                    transition: "opacity 10s ease, background-position 0.25s ease"
                 }}
             />   
             }))
