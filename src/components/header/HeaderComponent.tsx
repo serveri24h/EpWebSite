@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeaderComponent.css';
+import ArtistLogo from '../artistlogo/ArtistLogo';
 
 const HeaderLink:React.FC<{url:string, title:string}> = ({url, title}) => {
     return (          
@@ -13,10 +14,17 @@ const HeaderLink:React.FC<{url:string, title:string}> = ({url, title}) => {
 
 const PageHeader: React.FC = () => {
     return (
-        <div className='page-header'> 
-            <HeaderLink url='/puolenmetrinmetsa/#/songs' title='Music' />
-            <HeaderLink url='/puolenmetrinmetsa/#/band' title='Band' />
-            <HeaderLink url='/puolenmetrinmetsa/#/contact' title='Contact' />
+        <div className='header-container' >
+            <div className='artist-logo-link'>
+                <a href='/'>
+                    <ArtistLogo size='mini'/>
+                </a>
+            </div>
+            <div className='page-header'> 
+                <HeaderLink url='/puolenmetrinmetsa/#/songs' title='Album' />
+                <HeaderLink url='/puolenmetrinmetsa/#/band' title='Musicians' />
+                <HeaderLink url='/puolenmetrinmetsa/#/contact' title='Contact' />
+            </div>
         </div>
     )
 }

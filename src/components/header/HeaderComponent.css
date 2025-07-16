@@ -1,20 +1,52 @@
 
-.page-header {
+.header-container {
+    display:grid;
+    grid-template-columns: 1fr 3fr 1fr;
+
     position: sticky;
+    width: 100%;
     top: 0;
-    display:flex;
-    flex-direction:row;
-    width:100%;
-    color: var(--winter-white);
-    background-image: url("/public/images/textures/button-background.jpg");
-    justify-content:center;
-    font-family: BandNameFont, sans-serif;
-    font-size: small;
-    overflow: hidden;
+
     padding-top: 5px;
     padding-bottom: 40px;
+    background-image: url("/public/images/textures/button-background.jpg");
     -webkit-mask-image: linear-gradient(to bottom, rgb(99, 102, 107) 66%, transparent 100%);
     mask-image: linear-gradient(to bottom, rgb(255, 255, 255) 66%, transparent 100%);
+}
+
+.artist-logo-link {
+    display: flex;
+    align-items: center;
+    background: none;
+}
+.artist-logo-link a {
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-left: 15px;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.artist-logo-link a:hover, .artist-logo-link a:active  {
+    text-shadow: 2px 2px 4px rgb(255, 255, 255),
+    1px 1px 2px rgb(225, 141, 245),   /* Top-right shadow */
+    -1px -1px 2px rgb(108, 246, 163), /* Bottom-left shadow */
+    1px -1px 2px #9bffff,  /* Top-left shadow */
+    -1px 1px 2px rgb(0, 255, 60),  /* Bottom-right shadow */
+    1px 0px 2px rgb(84, 168, 168),  /* Bottom-right shadow */
+    -1px 0px 1px rgb(75, 255, 183);  /* Bottom-right shadow */
+}
+
+.page-header {
+    display: flex;
+    flex-direction:row;
+    color: var(--winter-white);
+
+    justify-content:center;
+    align-items: center;
+    font-family: BandNameFont, sans-serif;
+    font-size: small;
+    overflow:visible;
 }
 
 .page-header a {
@@ -23,7 +55,7 @@
     text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-.page-header a:hover {
+.page-header a:hover, .page-header a:active {
     color: var(--deep-blue); /* Change color on hover */
     text-shadow: 
         -5px 5px 10px var(--winter-blue),
@@ -44,13 +76,16 @@
 
 @media (max-width: 768px) {
   .page-header {
-    font-size: xx-small;
+    font-size: 0.4rem;
   }
 
-  .page-header-link {
+    .page-header-link {
         padding-left: 5px;
         padding-right: 5px;
         margin-left:2.5px;
         margin-right:2.5px;
     }
+    .artist-logo-link a {
+        padding-left: 5px;
+    }   
 }

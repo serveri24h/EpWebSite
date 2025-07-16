@@ -1,50 +1,3 @@
-.logo-holder {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.artist-logo, .artist-logo-small, 
-.artist-logo-bottom, .artist-logo-bottom-small {
-    font-family: 'BandNameFont', sans-serif; 
-    padding-top: 0px;
-    margin-bottom: 0px;
-    margin-top: 0em;
-    font-weight: 500;
-    color: rgb(0, 0, 0);
-    transform: translateY(-15px);
-    text-shadow: 2px 2px 4px rgb(255, 255, 255),
-    1px 1px 2px rgb(225, 141, 245),   /* Top-right shadow */
-    -1px -1px 2px rgb(108, 246, 163), /* Bottom-left shadow */
-    1px -1px 2px #9bffff,  /* Top-left shadow */
-    -1px 1px 2px rgb(0, 255, 60),  /* Bottom-right shadow */
-    1px 0px 2px rgb(84, 168, 168),  /* Bottom-right shadow */
-    -1px 0px 1px rgb(75, 255, 183);  /* Bottom-right shadow */
-}
-
-.artist-logo {
-    font-size: 3em;
-
-}
-
-.artist-logo-bottom {
-    font-size: 4em;
-    margin-top: -0.5em;
-    margin-left: -0.5em;
-}
-
-.artist-logo-small {
-    font-size: 2em;
-}
-
-.artist-logo-bottom-small {
-    font-size: 2.66;
-    margin-top: -0.4em;
-    margin-left: -0.4em;
-}
-
 .album-art-img  {
     max-width: 25%;
     height: auto; 
@@ -52,15 +5,7 @@
 
 @media (max-width: 768px) {
     .album-art-img  {
-        max-width: 60%;
-        height: auto; 
-    }
-
-    .artist-logo {
-        margin-top: -0.2em;
-    }
-
-    .artist-logo-bottom {
-        margin-top: -0.15em;
+        max-width: 80%;
+        min-width: 60%;
     }
 }

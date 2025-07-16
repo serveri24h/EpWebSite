@@ -1,14 +1,6 @@
 
 import './HomeComponent.css';
-
-const HomeComponent:React.FC<{large:boolean}> = ({large=true}) => {
-    return <div className='logo-holder'>
-        <h1 className={large ? "artist-logo": "artist-logo-small"}>
-            Puolen Metrin 
-        </h1>
-        <h1 className={large ? "artist-logo-bottom": "artist-logo-bottom-small"}>Metsā</h1> 
-    </div>
-}
+import ArtistLogo from '../artistlogo/ArtistLogo';
 
 export const AlbumArtComponent:React.FC = ()=> {
     return <>
@@ -17,6 +9,13 @@ export const AlbumArtComponent:React.FC = ()=> {
             alt='album-art'
         />
     </>
+}
+
+const HomeComponent = () => {
+    return <div className="App">
+        <ArtistLogo size='large'/>
+        <AlbumArtComponent/>
+    </div>
 }
 
 export default HomeComponent;

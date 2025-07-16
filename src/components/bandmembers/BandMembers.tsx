@@ -38,6 +38,7 @@ const BandMemberSelector:React.FC<BandMemberSelectorProps> = ({onSelection, n, n
             style={{ cursor: 'pointer' }}  // Optional, to show pointer on hover
             onClick={onSelection}
             onMouseEnter={()=>onHoverEnter(n)}
+            onTouchStart={()=>onHoverEnter(n)}
         >
             <pattern id={idName} patternUnits="userSpaceOnUse" width="600" height="800"
             >

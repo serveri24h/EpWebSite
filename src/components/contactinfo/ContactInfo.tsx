@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeComponent from '../homecomponent/HomeComponent';
+import ArtistLogo from '../artistlogo/ArtistLogo';
 import './ContactInfo.css';
 
 
@@ -7,10 +7,10 @@ const ContactInfo: React.FC = () => {
     return (
         <div className="contact-info-container">
             <div className="contact-card">
-                <HomeComponent large={false}/>
+                <ArtistLogo size='small'/>
                 <h2 className="contact-title"> Vastaamme </h2>
                 <p className="contact-item">
-                    <a href="puolenmetrinmetsaband@gmail.com" className="contact-link">puolenmetrinmetsa@gmail.com</a>
+                    <a href="puolenmetrinmetsaband@gmail.com" className="contact-link">puolenmetrinmetsaband@gmail.com</a>
                 </p>
                 <h3 className="find-us-title"> Soimme </h3>
                 <div className="social-links">

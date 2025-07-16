@@ -21,6 +21,14 @@
   transform: scale(1.5);
 }
 
+
+.member-mini-image:hover, .member-mini-image:active {
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8))
+            drop-shadow(0 0 15px rgba(0, 255, 0, 0.6));
+    cursor: pointer; 
+    z-index: 1000;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .band-member-selector-container {
@@ -28,10 +36,3 @@
     }
 }
   
-.member-mini-image:hover {
-    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8))
-            drop-shadow(0 0 15px rgba(0, 255, 0, 0.6));
-    cursor: pointer; 
-    z-index: 1000;
-}
-
