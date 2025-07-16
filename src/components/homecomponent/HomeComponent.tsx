@@ -14,7 +14,7 @@ export const AlbumArtComponent:React.FC = ()=> {
     return <>
         <img src={`${process.env["PUBLIC_URL"]}/images/album_art/album_art.jpg`} 
             className='album-art-img'
-            alt='album-image'
+            alt='album-art'
         />
     </>
 }
