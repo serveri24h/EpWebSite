@@ -5,7 +5,7 @@ import HomeComponent from '../../components/homecomponent/HomeComponent';
 const Home:React.FC = () => {
   return (
     <div className="App">
-      <HomeComponent/>
+      <HomeComponent large={true}/>
     </div>
   );
 }

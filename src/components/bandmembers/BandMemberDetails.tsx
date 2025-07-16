@@ -104,7 +104,7 @@ const BandMemberDetails:React.FC<{data:MemberConfig, onClose:any}> = ({data, onC
                     className="popup-page-content" 
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <h2 style={{fontFamily: 'BandNameFont, sans-serif'}}>{data.name}</h2>
+                    <h2 style={{fontFamily: 'BandNameFont, sans-serif'}}>{data.name !== "Sandy" ? data.name : "Sāndy"}</h2>
                     <h3 style={{fontFamily: 'BandNameFont, sans-serif'}}>{data.responsibility}</h3>
                     <img 
                         src={`${process.env.PUBLIC_URL}/images/bandmembers/${name.toLowerCase()}.jpg`} 
