@@ -55,4 +55,7 @@
         max-width: 60%;
         height: auto; 
     }
+    .artist-logo-bottom {
+        margin-top: -0.1em;
+    }
 }
