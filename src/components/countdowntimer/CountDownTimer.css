@@ -8,16 +8,17 @@
 }
 
 .timer-box {
-  background-image: url("/public/images/textures/button-background-side.jpg");
-  background-size: 400%;
-  background-position: 55% 50%;
+  background-image: url("/public/images/album_art/album_art.jpg");
+  background-size: 800%;
+  background-position: 50% 50%;
   border: 1px solid var(--mist);
   border-radius: 20px;
   padding: 2.5rem 3rem;
   box-shadow: 0 10px 30px rgba(46, 77, 56, 0.1);
   text-align: center;
   color: var(--dark-fir);
-  max-width: 500px;
+  max-width: 90%;
+  min-width: 25vw;
   width: 100%;
 }
 
@@ -39,4 +40,23 @@
   font-size: 1rem;
   color: var(--pine);
   opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+
+  .timer-box {
+    min-width: 60vw;
+  }
+  
+  .timer-title {
+    font-size: 1.4rem;
+  }
+
+  .timer-count {
+    font-size: 1.5rem;
+  }
+
+  .timer-subtext {
+    font-size: 0.6rem;
+  }
 }
