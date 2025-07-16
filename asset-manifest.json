@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/puolenmetrinmetsa/static/css/main.b36b0e75.css",
-    "main.js": "/puolenmetrinmetsa/static/js/main.837f3cb9.js",
+    "main.js": "/puolenmetrinmetsa/static/js/main.d62f3a22.js",
     "static/js/453.36c617fc.chunk.js": "/puolenmetrinmetsa/static/js/453.36c617fc.chunk.js",
     "static/media/old-paper.jpg": "/puolenmetrinmetsa/static/media/old-paper.f5d7aeb29ca37d9e4372.jpg",
     "static/media/album_art.jpg": "/puolenmetrinmetsa/static/media/album_art.1835c12b339e1d8d7050.jpg",
@@ -11,11 +11,11 @@
     "static/media/spotify.svg": "/puolenmetrinmetsa/static/media/spotify.cb0ec48de48ec1589ce5b4b3730071e6.svg",
     "index.html": "/puolenmetrinmetsa/index.html",
     "main.b36b0e75.css.map": "/puolenmetrinmetsa/static/css/main.b36b0e75.css.map",
-    "main.837f3cb9.js.map": "/puolenmetrinmetsa/static/js/main.837f3cb9.js.map",
+    "main.d62f3a22.js.map": "/puolenmetrinmetsa/static/js/main.d62f3a22.js.map",
     "453.36c617fc.chunk.js.map": "/puolenmetrinmetsa/static/js/453.36c617fc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b36b0e75.css",
-    "static/js/main.837f3cb9.js"
+    "static/js/main.d62f3a22.js"
   ]
 }
