@@ -1,11 +1,12 @@
 import React from 'react';
-import HomeComponent from '../../components/homecomponent/HomeComponent';
+import HomeComponent, {AlbumArtComponent} from '../../components/homecomponent/HomeComponent';
 
 
 const Home:React.FC = () => {
   return (
     <div className="App">
       <HomeComponent large={true}/>
+      <AlbumArtComponent/>
     </div>
   );
 }

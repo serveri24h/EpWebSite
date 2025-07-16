@@ -10,7 +10,7 @@ const ContactInfo: React.FC = () => {
                 <HomeComponent large={false}/>
                 <h2 className="contact-title"> Vastaamme </h2>
                 <p className="contact-item">
-                    <a href="puolenmetrinmetsa@gmail.com" className="contact-link">puolenmetrinmetsa@gmail.com</a>
+                    <a href="puolenmetrinmetsaband@gmail.com" className="contact-link">puolenmetrinmetsa@gmail.com</a>
                 </p>
                 <h3 className="find-us-title"> Soimme </h3>
                 <div className="social-links">
