@@ -18,7 +18,7 @@ const ContactInfo: React.FC = () => {
                         YouTube
                     </a>
                     <span className="divider">|</span>
-                    <a href="https://spotify.com" target="_blank" rel="noreferrer" className="social-link">
+                    <a href="https://open.spotify.com/artist/2bWSquKoZggQO1MXOsTshL" target="_blank" rel="noreferrer" className="social-link">
                         Spotify
                     </a>
                 </div>
