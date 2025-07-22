@@ -4,7 +4,7 @@ import CountdownTimer from '../../components/countdowntimer/CountDownTimer';
 
 const Songs:React.FC = () => {
 
-    const countDownDate = new Date('2025-07-18T00:00:00');
+    const countDownDate = new Date('2025-07-25T00:00:00');
     const [now, setNow] = useState(Date.now());
 
     useEffect(() => {

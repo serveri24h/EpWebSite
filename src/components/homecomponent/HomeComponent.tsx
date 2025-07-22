@@ -12,7 +12,7 @@ export const AlbumArtComponent:React.FC = ()=> {
 }
 
 const HomeComponent = () => {
-    return <div className="App">
+    return <div className='App'>
         <ArtistLogo size='large'/>
         <AlbumArtComponent/>
     </div>
