@@ -14,7 +14,7 @@ const ContactInfo: React.FC = () => {
                 </p>
                 <h3 className="find-us-title"> Soimme </h3>
                 <div className="social-links">
-                    <a href="https://youtube.com" target="_blank" rel="noreferrer" className="social-link">
+                    <a href="https://youtube.com/@0.5m-metsa" target="_blank" rel="noreferrer" className="social-link">
                         YouTube
                     </a>
                     <span className="divider">|</span>
