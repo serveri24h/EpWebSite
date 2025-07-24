@@ -16,3 +16,30 @@
     flex-grow: 1;
     overflow: hidden;
 }
+
+.credits-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin: 0px;
+    max-width: 300px;
+    bottom: 5px;
+    right: 5px;
+    align-content: center;
+}
+
+.credits-container h4 {
+    margin: 2px;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--snow);
+    text-shadow: 2px 2px var(--pine);
+    padding: 0px;
+    font-size: small;
+}
+
+@media (max-width: 768px) {
+    .credits-container h4 {
+        font-size: xx-small;
+    }
+}
